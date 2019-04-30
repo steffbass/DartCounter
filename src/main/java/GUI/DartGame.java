@@ -5,7 +5,10 @@
  */
 package GUI;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -16,10 +19,21 @@ public class DartGame extends javax.swing.JFrame {
     /**
      * Creates new form DartGame
      */
+    
+    private  Color bc = new Color(46, 53, 57);     
+    
     public DartGame() {
         initComponents();
-         
+                //background.setIcon(new ImageIcon("./Assets/Board.png"));
+                 super.setBackground(Color.CYAN);            
+                s1.setOpaque(true);
+                s2.setOpaque(true);
+                s3.setOpaque(true);
+                s.setOpaque(true);
+                
+                
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,10 +46,22 @@ public class DartGame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         board = new javax.swing.JPanel();
-        background = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         player = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         checkout = new javax.swing.JPanel();
+        c = new javax.swing.JLabel();
+        c1 = new javax.swing.JLabel();
+        c2 = new javax.swing.JLabel();
+        c3 = new javax.swing.JLabel();
         throwvalue = new javax.swing.JPanel();
+        undo = new javax.swing.JButton();
+        confirm = new javax.swing.JButton();
+        s = new javax.swing.JLabel();
+        s1 = new javax.swing.JLabel();
+        s2 = new javax.swing.JLabel();
+        s3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Format = new javax.swing.JMenu();
         f_301 = new javax.swing.JMenuItem();
@@ -47,14 +73,19 @@ public class DartGame extends javax.swing.JFrame {
         p_4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Dart counter");
+        setBackground(new java.awt.Color(46, 53, 57));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        board.setLayout(null);
+        board.setLayout(new java.awt.GridBagLayout());
 
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Board.jpg"))); // NOI18N
-        background.setText("jLabel1");
-        board.add(background);
-        background.setBounds(0, 0, 880, 820);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Board.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        board.add(jLabel1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -66,6 +97,26 @@ public class DartGame extends javax.swing.JFrame {
         getContentPane().add(board, gridBagConstraints);
 
         player.setLayout(new java.awt.GridBagLayout());
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        player.add(jScrollPane1, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -73,6 +124,44 @@ public class DartGame extends javax.swing.JFrame {
         getContentPane().add(player, gridBagConstraints);
 
         checkout.setLayout(new java.awt.GridBagLayout());
+
+        c.setText("Checkout");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        checkout.add(c, gridBagConstraints);
+
+        c1.setText("l1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        checkout.add(c1, gridBagConstraints);
+
+        c2.setText("l2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        checkout.add(c2, gridBagConstraints);
+
+        c3.setText("l3");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        checkout.add(c3, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -82,6 +171,78 @@ public class DartGame extends javax.swing.JFrame {
         getContentPane().add(checkout, gridBagConstraints);
 
         throwvalue.setLayout(new java.awt.GridBagLayout());
+
+        undo.setBackground(new java.awt.Color(255, 51, 51));
+        undo.setForeground(new java.awt.Color(255, 255, 255));
+        undo.setText("Undo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(undo, gridBagConstraints);
+
+        confirm.setBackground(new java.awt.Color(102, 255, 102));
+        confirm.setForeground(new java.awt.Color(255, 255, 255));
+        confirm.setText("Confirm");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(confirm, gridBagConstraints);
+
+        s.setBackground(new java.awt.Color(46, 53, 57));
+        s.setForeground(new java.awt.Color(255, 255, 255));
+        s.setText("Score");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(s, gridBagConstraints);
+
+        s1.setBackground(new java.awt.Color(46, 53, 57));
+        s1.setForeground(new java.awt.Color(255, 255, 255));
+        s1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        s1.setText("-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(s1, gridBagConstraints);
+
+        s2.setBackground(new java.awt.Color(46, 53, 57));
+        s2.setForeground(new java.awt.Color(255, 255, 255));
+        s2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        s2.setText("-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(s2, gridBagConstraints);
+
+        s3.setBackground(new java.awt.Color(46, 53, 57));
+        s3.setForeground(new java.awt.Color(255, 255, 255));
+        s3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        s3.setText("-");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        throwvalue.add(s3, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -159,17 +320,29 @@ public class DartGame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Format;
     private javax.swing.JMenu Spieler;
-    private javax.swing.JLabel background;
     private javax.swing.JPanel board;
+    private javax.swing.JLabel c;
+    private javax.swing.JLabel c1;
+    private javax.swing.JLabel c2;
+    private javax.swing.JLabel c3;
     private javax.swing.JPanel checkout;
+    private javax.swing.JButton confirm;
     private javax.swing.JMenuItem f_301;
     private javax.swing.JMenuItem f_501;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem p_1;
     private javax.swing.JMenuItem p_2;
     private javax.swing.JMenuItem p_3;
     private javax.swing.JMenuItem p_4;
     private javax.swing.JPanel player;
+    private javax.swing.JLabel s;
+    private javax.swing.JLabel s1;
+    private javax.swing.JLabel s2;
+    private javax.swing.JLabel s3;
     private javax.swing.JPanel throwvalue;
+    private javax.swing.JButton undo;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,4 +14,35 @@ public class Player {
     private String name;
     private int format;
     private int würfe;
+    private int score;
+    private double doubleqoute;
+
+    public Player(String name, int format) {
+        this.name = name;
+        this.format = format;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getFormat() {
+        return format;
+    }
+
+    public int getWürfe() {
+        return würfe;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public double getDoubleqoute() {
+        return doubleqoute;
+    }
+    
+   
+    
+    
 }

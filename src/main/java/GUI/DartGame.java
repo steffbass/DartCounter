@@ -5,8 +5,10 @@
  */
 package GUI;
 
+import BL.Player;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,33 +19,33 @@ public class DartGame extends javax.swing.JFrame {
     /**
      * Creates new form DartGame
      */
-    
-    private  Color bc = new Color(46, 53, 57);     
-    
+    private int format;
+
+    private Color bc = new Color(46, 53, 57);
+
     public DartGame() {
         initComponents();
-                //background.setIcon(new ImageIcon("./Assets/Board.png"));
-              //   this.setBackground(Color.CYAN);            
-                s1.setOpaque(true);
-                s2.setOpaque(true);
-                s3.setOpaque(true);
-                s.setOpaque(true);
-                c.setBackground(bc);
-                c.setOpaque(true);
-                b.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/Board.jpg"));
-                b.setBackground(bc);
-                b.setOpaque(true);
-                c1.setBackground(bc);
-                c1.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
-                c2.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
-                c3.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
-                c2.setBackground(bc);
-                c3.setBackground(bc);
-              c1.setOpaque(true);
-              c2.setOpaque(true);
-              c3.setOpaque(true);                  
+        //background.setIcon(new ImageIcon("./Assets/Board.png"));
+        //   this.setBackground(Color.CYAN);            
+        s1.setOpaque(true);
+        s2.setOpaque(true);
+        s3.setOpaque(true);
+        s.setOpaque(true);
+        c.setBackground(bc);
+        c.setOpaque(true);
+        b.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/Board.jpg"));
+        b.setBackground(bc);
+        b.setOpaque(true);
+        c1.setBackground(bc);
+        c1.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
+        c2.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
+        c3.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
+        c2.setBackground(bc);
+        c3.setBackground(bc);
+        c1.setOpaque(true);
+        c2.setOpaque(true);
+        c3.setOpaque(true);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,6 +83,8 @@ public class DartGame extends javax.swing.JFrame {
         p_2 = new javax.swing.JMenuItem();
         p_3 = new javax.swing.JMenuItem();
         p_4 = new javax.swing.JMenuItem();
+        Steuerung = new javax.swing.JMenu();
+        r = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dart counter");
@@ -313,6 +317,18 @@ public class DartGame extends javax.swing.JFrame {
 
         jMenuBar1.add(Spieler);
 
+        Steuerung.setText("Steuerung");
+
+        r.setText("Restart");
+        r.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rActionPerformed(evt);
+            }
+        });
+        Steuerung.add(r);
+
+        jMenuBar1.add(Steuerung);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -320,27 +336,61 @@ public class DartGame extends javax.swing.JFrame {
 
     private void p_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_1ActionPerformed
         // TODO add your handling code here:
+
+        for (int i = 1; i < 2; i++) {
+            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
+            if(name == null){break;}
+            Player pl = new Player(name, format);
+        }
+
+
     }//GEN-LAST:event_p_1ActionPerformed
 
     private void p_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_2ActionPerformed
         // TODO add your handling code here:
+
+        for (int i = 1; i < 3; i++) {
+            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
+              if(name == null){break;}
+            Player pl = new Player(name, format);
+        }
     }//GEN-LAST:event_p_2ActionPerformed
 
     private void p_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_3ActionPerformed
         // TODO add your handling code here:
+
+        for (int i = 1; i < 4; i++) {
+            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
+              if(name == null){break;}
+            Player pl = new Player(name, format);
+        }
     }//GEN-LAST:event_p_3ActionPerformed
 
     private void p_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_4ActionPerformed
         // TODO add your handling code here:
+
+        for (int i = 1; i < 5; i++) {
+            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
+              if(name == null){break;}
+            Player pl = new Player(name, format);
+        }
     }//GEN-LAST:event_p_4ActionPerformed
 
     private void f_301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_301ActionPerformed
         // TODO add your handling code here:
+        format = 301;
+        JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
     }//GEN-LAST:event_f_301ActionPerformed
 
     private void f_501ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_501ActionPerformed
         // TODO add your handling code here:
+        format = 501;
+        JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
     }//GEN-LAST:event_f_501ActionPerformed
+
+    private void rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rActionPerformed
 
     /**
      * @param args the command line arguments
@@ -380,6 +430,7 @@ public class DartGame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Format;
     private javax.swing.JMenu Spieler;
+    private javax.swing.JMenu Steuerung;
     private javax.swing.JLabel b;
     private javax.swing.JPanel board;
     private javax.swing.JLabel c;
@@ -398,6 +449,7 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JMenuItem p_3;
     private javax.swing.JMenuItem p_4;
     private javax.swing.JPanel player;
+    private javax.swing.JMenuItem r;
     private javax.swing.JLabel s;
     private javax.swing.JLabel s1;
     private javax.swing.JLabel s2;

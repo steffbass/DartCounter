@@ -6,9 +6,7 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 
 /**
  *
@@ -25,12 +23,14 @@ public class DartGame extends javax.swing.JFrame {
     public DartGame() {
         initComponents();
                 //background.setIcon(new ImageIcon("./Assets/Board.png"));
-                 super.setBackground(Color.CYAN);            
+                 this.setBackground(Color.CYAN);            
                 s1.setOpaque(true);
                 s2.setOpaque(true);
                 s3.setOpaque(true);
                 s.setOpaque(true);
-                
+                jLabel1.setIcon(new ImageIcon("./Assets/Board.jpg"));
+                jLabel1.setOpaque(true);
+              
                 
     }
     
@@ -78,9 +78,6 @@ public class DartGame extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         board.setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Board.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;

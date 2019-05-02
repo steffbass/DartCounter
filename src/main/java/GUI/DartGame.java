@@ -23,7 +23,7 @@ public class DartGame extends javax.swing.JFrame {
     public DartGame() {
         initComponents();
                 //background.setIcon(new ImageIcon("./Assets/Board.png"));
-                 this.setBackground(Color.CYAN);            
+              //   this.setBackground(Color.CYAN);            
                 s1.setOpaque(true);
                 s2.setOpaque(true);
                 s3.setOpaque(true);
@@ -34,9 +34,9 @@ public class DartGame extends javax.swing.JFrame {
                 b.setBackground(bc);
                 b.setOpaque(true);
                 c1.setBackground(bc);
-                c1.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
-                c2.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
-                c3.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
+                c1.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
+                c2.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
+                c3.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
                 c2.setBackground(bc);
                 c3.setBackground(bc);
               c1.setOpaque(true);

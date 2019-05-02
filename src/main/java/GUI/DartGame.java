@@ -28,10 +28,20 @@ public class DartGame extends javax.swing.JFrame {
                 s2.setOpaque(true);
                 s3.setOpaque(true);
                 s.setOpaque(true);
-                jLabel1.setIcon(new ImageIcon("./Assets/Board.jpg"));
-                jLabel1.setOpaque(true);
-              
-                
+                c.setBackground(bc);
+                c.setOpaque(true);
+                b.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/Board.jpg"));
+                b.setBackground(bc);
+                b.setOpaque(true);
+                c1.setBackground(bc);
+                c1.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
+                c2.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
+                c3.setIcon(new ImageIcon("/Users/stefan/Downloads/_.jpg"));
+                c2.setBackground(bc);
+                c3.setBackground(bc);
+              c1.setOpaque(true);
+              c2.setOpaque(true);
+              c3.setOpaque(true);                  
     }
     
 
@@ -46,7 +56,7 @@ public class DartGame extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         board = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        b = new javax.swing.JLabel();
         player = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -75,14 +85,18 @@ public class DartGame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dart counter");
         setBackground(new java.awt.Color(46, 53, 57));
+        setPreferredSize(new java.awt.Dimension(1300, 860));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         board.setLayout(new java.awt.GridBagLayout());
+
+        b.setMaximumSize(new java.awt.Dimension(800, 800));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        board.add(jLabel1, gridBagConstraints);
+        board.add(b, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -122,6 +136,7 @@ public class DartGame extends javax.swing.JFrame {
 
         checkout.setLayout(new java.awt.GridBagLayout());
 
+        c.setForeground(new java.awt.Color(255, 255, 255));
         c.setText("Checkout");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -131,8 +146,6 @@ public class DartGame extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         checkout.add(c, gridBagConstraints);
-
-        c1.setText("l1");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -140,8 +153,6 @@ public class DartGame extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         checkout.add(c1, gridBagConstraints);
-
-        c2.setText("l2");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -149,8 +160,6 @@ public class DartGame extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         checkout.add(c2, gridBagConstraints);
-
-        c3.setText("l3");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -251,9 +260,19 @@ public class DartGame extends javax.swing.JFrame {
         Format.setText("Format");
 
         f_301.setText("301 - Double out");
+        f_301.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                f_301ActionPerformed(evt);
+            }
+        });
         Format.add(f_301);
 
         f_501.setText("501 - Double out");
+        f_501.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                f_501ActionPerformed(evt);
+            }
+        });
         Format.add(f_501);
 
         jMenuBar1.add(Format);
@@ -261,15 +280,35 @@ public class DartGame extends javax.swing.JFrame {
         Spieler.setText("Spieler");
 
         p_1.setText("1 Spieler");
+        p_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p_1ActionPerformed(evt);
+            }
+        });
         Spieler.add(p_1);
 
         p_2.setText("2 Spieler");
+        p_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p_2ActionPerformed(evt);
+            }
+        });
         Spieler.add(p_2);
 
         p_3.setText("3 Spieler");
+        p_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p_3ActionPerformed(evt);
+            }
+        });
         Spieler.add(p_3);
 
         p_4.setText("4 Spieler");
+        p_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                p_4ActionPerformed(evt);
+            }
+        });
         Spieler.add(p_4);
 
         jMenuBar1.add(Spieler);
@@ -278,6 +317,30 @@ public class DartGame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void p_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_1ActionPerformed
+
+    private void p_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_2ActionPerformed
+
+    private void p_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_3ActionPerformed
+
+    private void p_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_p_4ActionPerformed
+
+    private void f_301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_301ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_f_301ActionPerformed
+
+    private void f_501ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_501ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_f_501ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,6 +380,7 @@ public class DartGame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu Format;
     private javax.swing.JMenu Spieler;
+    private javax.swing.JLabel b;
     private javax.swing.JPanel board;
     private javax.swing.JLabel c;
     private javax.swing.JLabel c1;
@@ -326,7 +390,6 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JButton confirm;
     private javax.swing.JMenuItem f_301;
     private javax.swing.JMenuItem f_501;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

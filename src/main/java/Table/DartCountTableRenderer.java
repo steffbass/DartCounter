@@ -33,18 +33,27 @@ public class DartCountTableRenderer implements TableCellRenderer {
         switch (column) {
             case 0:
                 label.setText(p.getName());
+                label.setBackground(bc);
+                label.setForeground(Color.WHITE);
                 break;
             case 1:
                 label.setText("" + p.getLegs());
+                 label.setBackground(bc);
+                label.setForeground(Color.WHITE);
                 break;
             case 2:
                 label.setText("" + p.getFormat());
+                 label.setBackground(bc);
+                label.setForeground(Color.WHITE);
                 break;
             case 3:
                 if (p.isThrowing()) {
                     label.setBackground(gold);
                     break;
                 }
+                else  
+                label.setBackground(bc);
+                label.setForeground(Color.WHITE);
 
         }
         return label;

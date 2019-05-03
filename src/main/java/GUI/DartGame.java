@@ -366,18 +366,23 @@ public class DartGame extends javax.swing.JFrame {
     private void p_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_1ActionPerformed
         // TODO add your handling code here:
 
-        if (format != 0) {
+        if (format != 0 && bl.size() == 0) {
             for (int i = 1; i < 2; i++) {
                 String name = JOptionPane.showInputDialog("Name von Spieler " + i);
                 if (name == null) {
                     break;
                 }
                 Player pl = new Player(name, format);
+                pl.setThrowing(true);
                 bl.add(pl);
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            if (format == 0) {
+                JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Um weitere Spieler hinzufügen zu können müssen Sie das Spiel neu starten.");
+            }
         }
 
     }//GEN-LAST:event_p_1ActionPerformed
@@ -385,54 +390,75 @@ public class DartGame extends javax.swing.JFrame {
     private void p_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_2ActionPerformed
         // TODO add your handling code here:
 
-        if (format != 0) {
+        if (format != 0 && bl.size() == 0) {
             for (int i = 1; i < 3; i++) {
                 String name = JOptionPane.showInputDialog("Name von Spieler " + i);
                 if (name == null) {
                     break;
                 }
                 Player pl = new Player(name, format);
+                if (i == 1) {
+                    pl.setThrowing(true);
+                }
                 bl.add(pl);
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            if (format == 0) {
+                JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Um weitere Spieler hinzufügen zu können müssen Sie das Spiel neu starten.");
+            }
         }
     }//GEN-LAST:event_p_2ActionPerformed
 
     private void p_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_3ActionPerformed
         // TODO add your handling code here:
 
-        if (format != 0) {
+        if (format != 0 && bl.size() == 0) {
             for (int i = 1; i < 4; i++) {
                 String name = JOptionPane.showInputDialog("Name von Spieler " + i);
                 if (name == null) {
                     break;
                 }
                 Player pl = new Player(name, format);
+                if (i == 1) {
+                    pl.setThrowing(true);
+                }
                 bl.add(pl);
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            if (format == 0) {
+                JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Um weitere Spieler hinzufügen zu können müssen Sie das Spiel neu starten.");
+            }
         }
     }//GEN-LAST:event_p_3ActionPerformed
 
     private void p_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_4ActionPerformed
         // TODO add your handling code here:
 
-        if (format != 0) {
+        if (format != 0 && bl.size() == 0) {
             for (int i = 1; i < 5; i++) {
                 String name = JOptionPane.showInputDialog("Name von Spieler " + i);
                 if (name == null) {
                     break;
                 }
                 Player pl = new Player(name, format);
+                if (i == 1) {
+                    pl.setThrowing(true);
+                }
                 bl.add(pl);
 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            if (format == 0) {
+                JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Um weitere Spieler hinzufügen zu können müssen Sie das Spiel neu starten.");
+            }
         }
     }//GEN-LAST:event_p_4ActionPerformed
 

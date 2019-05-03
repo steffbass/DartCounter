@@ -23,6 +23,7 @@ public class DartGame extends javax.swing.JFrame {
      */
     private int format = 0;
     private Player currentPlayer;
+    String[] options = new String[]{"Beenden","Neu start", "Speichern & weiter spielen","Weiter spielen"};
 
     private DartCountModel bl = new DartCountModel();
     private Color bc = new Color(46, 53, 57);
@@ -49,7 +50,7 @@ public class DartGame extends javax.swing.JFrame {
         c1.setOpaque(true);
         c2.setOpaque(true);
         c3.setOpaque(true);
-c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+        c1.setIcon(new ImageIcon("./Assets/-.jpg"));
         c2.setIcon(new ImageIcon("./Assets/-.jpg"));
         c3.setIcon(new ImageIcon("./Assets/-.jpg"));
     }
@@ -489,22 +490,20 @@ c1.setIcon(new ImageIcon("./Assets/-.jpg"));
         String pos1 = "";
         String pos2 = "";
         String pos3 = "";
-        
-     
+
         String[] chelp = new String[3];
         chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
-                
-         pos1 = chelp[0];
-       System.out.println(pos1);
-         pos2 = chelp[1];
+
+        pos1 = chelp[0];
+        System.out.println(pos1);
+        pos2 = chelp[1];
         System.out.println(pos2);
-         pos3 = chelp[2];
+        pos3 = chelp[2];
         System.out.println(pos3);
-        
+
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
         c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
-    
 
         if (format != 0 && bl.size() != 0) {
             int wurf = 0;
@@ -517,34 +516,49 @@ c1.setIcon(new ImageIcon("./Assets/-.jpg"));
                 } else {
                     currentPlayer.throw_input_value(wurf);
 
+                    try {
+                        bl.checkwin_einfach(currentPlayer);
+                       
+                        if (currentPlayer.isFinnished()) {
+
+                            int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                                    null, options, options[0]);
+                        }
+                    } catch (Exception p) {
+                        JOptionPane.showMessageDialog(null, "Überworfen");
+                    }
+
+                    currentPlayer.save();
                     bl.next(currentPlayer);
                     currentPlayer = bl.getCurrent();
-                    
+
                     chelp = new String[3];
-        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
-                
-         pos1 = chelp[0];
-       System.out.println(pos1);
-         pos2 = chelp[1];
-        System.out.println(pos2);
-         pos3 = chelp[2];
-        System.out.println(pos3);
-        
-        c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
-        c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
-        c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
+                    chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+
+                    pos1 = chelp[0];
+                    System.out.println(pos1);
+                    pos2 = chelp[1];
+                    System.out.println(pos2);
+                    pos3 = chelp[2];
+                    System.out.println(pos3);
+
+                    c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
+                    c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
+                    c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
                 }
+
             } catch (Exception e) {
-               JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
-System.out.println(e);
-e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+                System.out.println(e);
+                e.printStackTrace();
             }
 
         } else {
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
-   //  }
+        //  }
     }//GEN-LAST:event_s_input_valActionPerformed
 
     private void s_input_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_threeActionPerformed
@@ -552,26 +566,24 @@ e.printStackTrace();
         //felder input
 
         currentPlayer = bl.getCurrent();
-        
-         String pos1 = "";
+
+        String pos1 = "";
         String pos2 = "";
         String pos3 = "";
-        
-     
+
         String[] chelp = new String[3];
         chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
-                
-         pos1 = chelp[0];
-       System.out.println(pos1);
-         pos2 = chelp[1];
+
+        pos1 = chelp[0];
+        System.out.println(pos1);
+        pos2 = chelp[1];
         System.out.println(pos2);
-         pos3 = chelp[2];
+        pos3 = chelp[2];
         System.out.println(pos3);
-        
+
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
         c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
-    
 
         if (format != 0 && bl.size() != 0) {
             int value = 0;
@@ -590,23 +602,24 @@ e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
+        currentPlayer.save();
         bl.next(currentPlayer);
-         currentPlayer = bl.getCurrent();
-                    
-                    chelp = new String[3];
+        currentPlayer = bl.getCurrent();
+
+        chelp = new String[3];
         chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
-                
-         pos1 = chelp[0];
-       System.out.println(pos1);
-         pos2 = chelp[1];
+
+        pos1 = chelp[0];
+        System.out.println(pos1);
+        pos2 = chelp[1];
         System.out.println(pos2);
-         pos3 = chelp[2];
+        pos3 = chelp[2];
         System.out.println(pos3);
-        
+
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
         c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
-        
+
     }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**

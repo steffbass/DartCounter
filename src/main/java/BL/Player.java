@@ -73,6 +73,16 @@ public class Player {
         format -= value;
     }
 
+    public void setFormat(int format) {
+        this.format = format;
+    }
+
+    public void setFinnished(boolean finnished) {
+        this.finnished = finnished;
+    }
+    
+    
+
     public void throw_input_einzeln(String value) throws Exception {
         würfe += 1;
 
@@ -106,15 +116,21 @@ public class Player {
         }
     }
 
-    public boolean win(Player p) {
-        return false;
-        
-        //double out - 1 kann nicht
+  
+    
+    public boolean checkwin_doppel(Player p) throws Exception
+    {
+     return false;
+      //double out - 1 kann nicht
         //wenn win true is dann soll ein joption pane kommen wo man die statistik noch speichern kann
         // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
         // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
     }
 
+    public void save()
+    {
+      score = format;
+    }
     public String[] getCheckout(int value) {
 
         String[] c = new String[3];

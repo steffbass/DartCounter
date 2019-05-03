@@ -56,20 +56,47 @@ public class DartCountModel extends AbstractTableModel {
         }
         return p;
     }
-    
-    public void next(Player p)
-    {
+
+    public void next(Player p) {
+
         p.setThrowing(false);
-       int loc = player.indexOf(p);
-       
-       
-        if(loc == player.size()-1){loc=0;}
-        else{loc++;}
-       
+        int loc = player.indexOf(p);
+
+        if (loc == player.size() - 1) {
+            loc = 0;
+        } else {
+            loc++;
+        }
+
         Player help = player.get(loc);
+        if (help.isFinnished()) {
+            loc++;
+        }
+        
+        
+        help = player.get(loc);
         help.setThrowing(true);
         fireTableDataChanged();
     }
-    
-   
+
+    public boolean checkwin_einfach(Player p) throws Exception {
+
+        
+        if (p.getFormat() < 2) {
+            p.setFormat(p.getScore());
+            p.setFinnished(false);
+            throw new Exception("Überworfen");
+        }
+        
+        
+        if (p.getFormat() == 0)
+        {
+            p.setFinnished(true);
+        }
+        
+
+     return p.isFinnished();
+
+    }
+
 }

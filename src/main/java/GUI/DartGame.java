@@ -40,26 +40,20 @@ public class DartGame extends javax.swing.JFrame {
         s.setOpaque(true);
         c.setBackground(bc);
         c.setOpaque(true);
-        b.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/Board.jpg"));
+        b.setIcon(new ImageIcon("./Assets/Board.jpg"));
         b.setBackground(bc);
         b.setOpaque(true);
         c1.setBackground(bc);
-        c1.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
-        c2.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
-        c3.setIcon(new ImageIcon("/Users/stefan/git/DartCounter/src/main/java/Assets/_.jpg"));
         c2.setBackground(bc);
         c3.setBackground(bc);
         c1.setOpaque(true);
         c2.setOpaque(true);
         c3.setOpaque(true);
-     
-
+c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+        c2.setIcon(new ImageIcon("./Assets/-.jpg"));
+        c3.setIcon(new ImageIcon("./Assets/-.jpg"));
     }
 
-    // if(format == 0)
-    // {JOptionpane.showMessageDialog{"Kein Format ausgewählt!"; break;}}
-    // if(bl.size == 0)
-    // {JOptionpane.showMessageDialog{"Keine Spieler vorhanden!"; break;}}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -491,32 +485,66 @@ public class DartGame extends javax.swing.JFrame {
     private void s_input_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_valActionPerformed
         // TODO add your handling code here:
         //wert input
-currentPlayer = bl.getCurrent();
+        currentPlayer = bl.getCurrent();
+        String pos1 = "";
+        String pos2 = "";
+        String pos3 = "";
+        
+     
+        String[] chelp = new String[3];
+        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+                
+         pos1 = chelp[0];
+       System.out.println(pos1);
+         pos2 = chelp[1];
+        System.out.println(pos2);
+         pos3 = chelp[2];
+        System.out.println(pos3);
+        
+        c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
+        c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
+        c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
+    
 
         if (format != 0 && bl.size() != 0) {
             int wurf = 0;
             String geworfen = JOptionPane.showInputDialog("Anzahl der geworfenen Punkte: ");
             try {
                 wurf = Integer.parseInt(geworfen);
-                  if (wurf < 0 || wurf > 180) {
-                JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
-                 
-            }
-                  else{
-                currentPlayer.throw_input_value(wurf);
-                   bl.next(currentPlayer);}
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+                if (wurf < 0 || wurf > 180) {
+                    JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
+
+                } else {
+                    currentPlayer.throw_input_value(wurf);
+
+                    bl.next(currentPlayer);
+                    currentPlayer = bl.getCurrent();
+                    
+                    chelp = new String[3];
+        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
                 
+         pos1 = chelp[0];
+       System.out.println(pos1);
+         pos2 = chelp[1];
+        System.out.println(pos2);
+         pos3 = chelp[2];
+        System.out.println(pos3);
+        
+        c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
+        c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
+        c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
+                }
+            } catch (Exception e) {
+               JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+System.out.println(e);
+e.printStackTrace();
             }
 
-          
         } else {
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
-
-  
+   //  }
     }//GEN-LAST:event_s_input_valActionPerformed
 
     private void s_input_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_threeActionPerformed
@@ -524,13 +552,13 @@ currentPlayer = bl.getCurrent();
         //felder input
 
         currentPlayer = bl.getCurrent();
-        
+
         if (format != 0 && bl.size() != 0) {
             int value = 0;
 
             for (int i = 1; i < 4; i++) {
                 String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
-               
+
                 try {
                     currentPlayer.throw_input_einzeln(feld);
                 } catch (Exception e) {
@@ -542,8 +570,7 @@ currentPlayer = bl.getCurrent();
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
- 
-   bl.next(currentPlayer);
+        bl.next(currentPlayer);
     }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**

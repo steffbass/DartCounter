@@ -16,6 +16,8 @@ public class Player {
     private int würfe;
     private int score;
     private double doubleqoute;
+    private int legs = 0;
+    private boolean throwing = false;
 
     public Player(String name, int format) {
         this.name = name;
@@ -41,6 +43,16 @@ public class Player {
     public double getDoubleqoute() {
         return doubleqoute;
     }
+
+    public int getLegs() {
+        return legs;
+    }
+
+    public boolean isThrowing() {
+        return throwing;
+    }
+    
+   
     
    
     

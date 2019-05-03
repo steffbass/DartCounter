@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import BL.DartCountModel;
 import BL.Player;
+import Table.DartCountTableRenderer;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -19,14 +21,18 @@ public class DartGame extends javax.swing.JFrame {
     /**
      * Creates new form DartGame
      */
-    private int format;
+    private int format = 0;
 
+    private DartCountModel bl = new DartCountModel();
     private Color bc = new Color(46, 53, 57);
 
     public DartGame() {
-        initComponents();
         //background.setIcon(new ImageIcon("./Assets/Board.png"));
-        //   this.setBackground(Color.CYAN);            
+        //   this.setBackground(Color.CYAN); 
+
+        initComponents();
+        table.setModel(bl);
+        table.setDefaultRenderer(Object.class, new DartCountTableRenderer());
         s1.setOpaque(true);
         s2.setOpaque(true);
         s3.setOpaque(true);
@@ -45,8 +51,13 @@ public class DartGame extends javax.swing.JFrame {
         c1.setOpaque(true);
         c2.setOpaque(true);
         c3.setOpaque(true);
+
     }
 
+    // if(format == 0)
+    // {JOptionpane.showMessageDialog{"Kein Format ausgewählt!"; break;}}
+    // if(bl.size == 0)
+    // {JOptionpane.showMessageDialog{"Keine Spieler vorhanden!"; break;}}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,7 +72,7 @@ public class DartGame extends javax.swing.JFrame {
         b = new javax.swing.JLabel();
         player = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         checkout = new javax.swing.JPanel();
         c = new javax.swing.JLabel();
         c1 = new javax.swing.JLabel();
@@ -115,7 +126,7 @@ public class DartGame extends javax.swing.JFrame {
 
         player.setLayout(new java.awt.GridBagLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -126,7 +137,7 @@ public class DartGame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
@@ -355,63 +366,92 @@ public class DartGame extends javax.swing.JFrame {
     private void p_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_1ActionPerformed
         // TODO add your handling code here:
 
-        for (int i = 1; i < 2; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
-            if (name == null) {
-                break;
-            }
-            Player pl = new Player(name, format);
-        }
+        if (format != 0) {
+            for (int i = 1; i < 2; i++) {
+                String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+                if (name == null) {
+                    break;
+                }
+                Player pl = new Player(name, format);
+                bl.add(pl);
 
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
+        }
 
     }//GEN-LAST:event_p_1ActionPerformed
 
     private void p_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_2ActionPerformed
         // TODO add your handling code here:
 
-        for (int i = 1; i < 3; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
-            if (name == null) {
-                break;
+        if (format != 0) {
+            for (int i = 1; i < 3; i++) {
+                String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+                if (name == null) {
+                    break;
+                }
+                Player pl = new Player(name, format);
+                bl.add(pl);
+
             }
-            Player pl = new Player(name, format);
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
         }
     }//GEN-LAST:event_p_2ActionPerformed
 
     private void p_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_3ActionPerformed
         // TODO add your handling code here:
 
-        for (int i = 1; i < 4; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
-            if (name == null) {
-                break;
+        if (format != 0) {
+            for (int i = 1; i < 4; i++) {
+                String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+                if (name == null) {
+                    break;
+                }
+                Player pl = new Player(name, format);
+                bl.add(pl);
+
             }
-            Player pl = new Player(name, format);
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
         }
     }//GEN-LAST:event_p_3ActionPerformed
 
     private void p_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_4ActionPerformed
         // TODO add your handling code here:
 
-        for (int i = 1; i < 5; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
-            if (name == null) {
-                break;
+        if (format != 0) {
+            for (int i = 1; i < 5; i++) {
+                String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+                if (name == null) {
+                    break;
+                }
+                Player pl = new Player(name, format);
+                bl.add(pl);
+
             }
-            Player pl = new Player(name, format);
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format ausgewählt!");
         }
     }//GEN-LAST:event_p_4ActionPerformed
 
     private void f_301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_301ActionPerformed
         // TODO add your handling code here:
+        if (format != 0) {
+            JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
+        }
         format = 301;
-        JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
+
     }//GEN-LAST:event_f_301ActionPerformed
 
     private void f_501ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_501ActionPerformed
         // TODO add your handling code here:
+        if (format != 0) {
+            JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
+        }
         format = 501;
-        JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
+
     }//GEN-LAST:event_f_501ActionPerformed
 
     private void s_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_rActionPerformed
@@ -422,33 +462,47 @@ public class DartGame extends javax.swing.JFrame {
 
     private void s_input_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_valActionPerformed
         // TODO add your handling code here:
-        int wurf = 0;
-        String geworfen = JOptionPane.showInputDialog("Anzahl der geworfenen Punkte: ");
-        try {
-            wurf = Integer.parseInt(geworfen);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+        //wert input
+
+        if (format != 0 && bl.size() != 0) {
+            int wurf = 0;
+            String geworfen = JOptionPane.showInputDialog("Anzahl der geworfenen Punkte: ");
+            try {
+                wurf = Integer.parseInt(geworfen);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+            }
+
+            if (wurf < 0 || wurf > 180) {
+                JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
-        if (wurf < 0 || wurf > 180) {
-            JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
-        }
 
     }//GEN-LAST:event_s_input_valActionPerformed
 
     private void s_input_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_threeActionPerformed
         // TODO add your handling code here:
-        int value = 0;
+        //felder input
 
-        for (int i = 1; i < 4; i++) {
-            String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
-            try {
-                value = Integer.parseInt(feld);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
-                break;
+        if (format != 0 && bl.size() != 0) {
+            int value = 0;
+
+            for (int i = 1; i < 4; i++) {
+                String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
+                try {
+                    value = Integer.parseInt(feld);
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+                    break;
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
+
 
     }//GEN-LAST:event_s_input_threeActionPerformed
 
@@ -503,7 +557,6 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JMenuItem f_501;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem p_1;
     private javax.swing.JMenuItem p_2;
     private javax.swing.JMenuItem p_3;
@@ -516,6 +569,7 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JMenuItem s_input_three;
     private javax.swing.JMenuItem s_input_val;
     private javax.swing.JMenuItem s_r;
+    private javax.swing.JTable table;
     private javax.swing.JPanel throwvalue;
     private javax.swing.JButton undo;
     // End of variables declaration//GEN-END:variables

@@ -23,7 +23,7 @@ public class DartGame extends javax.swing.JFrame {
      */
     private int format = 0;
     private Player currentPlayer;
-    String[] options = new String[]{"Beenden","Neu start", "Speichern & weiter spielen","Weiter spielen"};
+    String[] options = new String[]{"Beenden","Neu start", "Speichern & weiter spielen"};
 
     private DartCountModel bl = new DartCountModel();
     private Color bc = new Color(46, 53, 57);
@@ -492,7 +492,7 @@ public class DartGame extends javax.swing.JFrame {
         String pos3 = "";
 
         String[] chelp = new String[3];
-        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+        chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
         System.out.println(pos1);
@@ -514,7 +514,7 @@ public class DartGame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
 
                 } else {
-                    currentPlayer.throw_input_value(wurf);
+                    bl.throw_input_value(currentPlayer,wurf);
 
                     try {
                         bl.checkwin_einfach(currentPlayer);
@@ -524,6 +524,11 @@ public class DartGame extends javax.swing.JFrame {
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                                     null, options, options[0]);
+                            
+                            if(response == 0){System.exit(1);}
+                      //      if(response == 1){restart}
+                         //     if(response == 1){speichern + neues leg}
+                         
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
@@ -534,7 +539,7 @@ public class DartGame extends javax.swing.JFrame {
                     currentPlayer = bl.getCurrent();
 
                     chelp = new String[3];
-                    chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+                    chelp = bl.getCheckout(currentPlayer);
 
                     pos1 = chelp[0];
                     System.out.println(pos1);
@@ -572,14 +577,12 @@ public class DartGame extends javax.swing.JFrame {
         String pos3 = "";
 
         String[] chelp = new String[3];
-        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+        chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
-        System.out.println(pos1);
         pos2 = chelp[1];
-        System.out.println(pos2);
         pos3 = chelp[2];
-        System.out.println(pos3);
+       
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
@@ -592,7 +595,7 @@ public class DartGame extends javax.swing.JFrame {
                 String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
 
                 try {
-                    currentPlayer.throw_input_einzeln(feld);
+                    bl.throw_input_einzeln(currentPlayer,feld);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
                     i--;
@@ -607,7 +610,7 @@ public class DartGame extends javax.swing.JFrame {
         currentPlayer = bl.getCurrent();
 
         chelp = new String[3];
-        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+        chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
         System.out.println(pos1);

@@ -535,7 +535,8 @@ public class DartGame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
-
+   currentPlayer.setThrowing(false);
+   bl.next(currentPlayer);
     }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**

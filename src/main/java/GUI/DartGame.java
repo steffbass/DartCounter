@@ -84,7 +84,9 @@ public class DartGame extends javax.swing.JFrame {
         p_3 = new javax.swing.JMenuItem();
         p_4 = new javax.swing.JMenuItem();
         Steuerung = new javax.swing.JMenu();
-        r = new javax.swing.JMenuItem();
+        s_r = new javax.swing.JMenuItem();
+        s_input_val = new javax.swing.JMenuItem();
+        s_input_three = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dart counter");
@@ -319,13 +321,29 @@ public class DartGame extends javax.swing.JFrame {
 
         Steuerung.setText("Steuerung");
 
-        r.setText("Restart");
-        r.addActionListener(new java.awt.event.ActionListener() {
+        s_r.setText("Restart");
+        s_r.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rActionPerformed(evt);
+                s_rActionPerformed(evt);
             }
         });
-        Steuerung.add(r);
+        Steuerung.add(s_r);
+
+        s_input_val.setText("Wert input");
+        s_input_val.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_input_valActionPerformed(evt);
+            }
+        });
+        Steuerung.add(s_input_val);
+
+        s_input_three.setText("Felder input");
+        s_input_three.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_input_threeActionPerformed(evt);
+            }
+        });
+        Steuerung.add(s_input_three);
 
         jMenuBar1.add(Steuerung);
 
@@ -338,8 +356,10 @@ public class DartGame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         for (int i = 1; i < 2; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
-            if(name == null){break;}
+            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+            if (name == null) {
+                break;
+            }
             Player pl = new Player(name, format);
         }
 
@@ -350,8 +370,10 @@ public class DartGame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         for (int i = 1; i < 3; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
-              if(name == null){break;}
+            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+            if (name == null) {
+                break;
+            }
             Player pl = new Player(name, format);
         }
     }//GEN-LAST:event_p_2ActionPerformed
@@ -360,8 +382,10 @@ public class DartGame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         for (int i = 1; i < 4; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
-              if(name == null){break;}
+            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+            if (name == null) {
+                break;
+            }
             Player pl = new Player(name, format);
         }
     }//GEN-LAST:event_p_3ActionPerformed
@@ -370,8 +394,10 @@ public class DartGame extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         for (int i = 1; i < 5; i++) {
-            String name = JOptionPane.showInputDialog("Name von Spieler " +i);
-              if(name == null){break;}
+            String name = JOptionPane.showInputDialog("Name von Spieler " + i);
+            if (name == null) {
+                break;
+            }
             Player pl = new Player(name, format);
         }
     }//GEN-LAST:event_p_4ActionPerformed
@@ -388,9 +414,43 @@ public class DartGame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Restarte das Spiel um die Änderungen zu aktivieren!");
     }//GEN-LAST:event_f_501ActionPerformed
 
-    private void rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rActionPerformed
+    private void s_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_rActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rActionPerformed
+
+
+    }//GEN-LAST:event_s_rActionPerformed
+
+    private void s_input_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_valActionPerformed
+        // TODO add your handling code here:
+        int wurf = 0;
+        String geworfen = JOptionPane.showInputDialog("Anzahl der geworfenen Punkte: ");
+        try {
+            wurf = Integer.parseInt(geworfen);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+        }
+
+        if (wurf < 0 || wurf > 180) {
+            JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
+        }
+
+    }//GEN-LAST:event_s_input_valActionPerformed
+
+    private void s_input_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_threeActionPerformed
+        // TODO add your handling code here:
+        int value = 0;
+
+        for (int i = 1; i < 4; i++) {
+            String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
+            try {
+                value = Integer.parseInt(feld);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+                break;
+            }
+        }
+
+    }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,11 +509,13 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JMenuItem p_3;
     private javax.swing.JMenuItem p_4;
     private javax.swing.JPanel player;
-    private javax.swing.JMenuItem r;
     private javax.swing.JLabel s;
     private javax.swing.JLabel s1;
     private javax.swing.JLabel s2;
     private javax.swing.JLabel s3;
+    private javax.swing.JMenuItem s_input_three;
+    private javax.swing.JMenuItem s_input_val;
+    private javax.swing.JMenuItem s_r;
     private javax.swing.JPanel throwvalue;
     private javax.swing.JButton undo;
     // End of variables declaration//GEN-END:variables

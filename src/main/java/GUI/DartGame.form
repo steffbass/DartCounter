@@ -71,12 +71,28 @@
             <Property name="text" type="java.lang.String" value="Steuerung"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="r">
+            <MenuItem class="javax.swing.JMenuItem" name="s_r">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Restart"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_rActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="s_input_val">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Wert input"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_input_valActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="s_input_three">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Felder input"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="s_input_threeActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

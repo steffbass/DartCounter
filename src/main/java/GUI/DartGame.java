@@ -52,7 +52,6 @@ public class DartGame extends javax.swing.JFrame {
         c1.setOpaque(true);
         c2.setOpaque(true);
         c3.setOpaque(true);
-     
 
     }
 
@@ -491,20 +490,25 @@ public class DartGame extends javax.swing.JFrame {
     private void s_input_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_valActionPerformed
         // TODO add your handling code here:
         //wert input
+        currentPlayer = bl.getCurrent();
 
         if (format != 0 && bl.size() != 0) {
             int wurf = 0;
             String geworfen = JOptionPane.showInputDialog("Anzahl der geworfenen Punkte: ");
             try {
                 wurf = Integer.parseInt(geworfen);
+                if (wurf < 0 || wurf > 180) {
+                    JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
+
+                } else {
+                    currentPlayer.throw_input_value(wurf);
+                    bl.next(currentPlayer);
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
-                
+
             }
 
-            if (wurf < 0 || wurf > 180) {
-                JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
-            }
         } else {
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
@@ -517,13 +521,13 @@ public class DartGame extends javax.swing.JFrame {
         //felder input
 
         currentPlayer = bl.getCurrent();
-        
+
         if (format != 0 && bl.size() != 0) {
             int value = 0;
 
             for (int i = 1; i < 4; i++) {
                 String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
-               
+
                 try {
                     currentPlayer.throw_input_einzeln(feld);
                 } catch (Exception e) {
@@ -535,8 +539,7 @@ public class DartGame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Kein Format oder Spieler!");
         }
 
-   currentPlayer.setThrowing(false);
-   bl.next(currentPlayer);
+        bl.next(currentPlayer);
     }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**

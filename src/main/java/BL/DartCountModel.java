@@ -60,14 +60,12 @@ public class DartCountModel extends AbstractTableModel {
     public void next(Player p)
     {
         p.setThrowing(false);
-       int loc = 0;
-        for (int i = 0; i < player.size(); i++) {
-            if(p != player.get(i))
-            {loc = i;}              
-        }
+       int loc = player.indexOf(p);
        
+        System.out.println(loc+"alt");
         if(loc == player.size()){loc=0;}
-        
+        else{loc++;}
+        System.out.println(loc+"neu");
         Player help = player.get(loc);
         help.setThrowing(true);
         fireTableDataChanged();

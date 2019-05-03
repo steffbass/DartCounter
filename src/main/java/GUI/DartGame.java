@@ -552,6 +552,26 @@ e.printStackTrace();
         //felder input
 
         currentPlayer = bl.getCurrent();
+        
+         String pos1 = "";
+        String pos2 = "";
+        String pos3 = "";
+        
+     
+        String[] chelp = new String[3];
+        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+                
+         pos1 = chelp[0];
+       System.out.println(pos1);
+         pos2 = chelp[1];
+        System.out.println(pos2);
+         pos3 = chelp[2];
+        System.out.println(pos3);
+        
+        c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
+        c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
+        c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
+    
 
         if (format != 0 && bl.size() != 0) {
             int value = 0;
@@ -571,6 +591,22 @@ e.printStackTrace();
         }
 
         bl.next(currentPlayer);
+         currentPlayer = bl.getCurrent();
+                    
+                    chelp = new String[3];
+        chelp = currentPlayer.getCheckout(currentPlayer.getFormat());
+                
+         pos1 = chelp[0];
+       System.out.println(pos1);
+         pos2 = chelp[1];
+        System.out.println(pos2);
+         pos3 = chelp[2];
+        System.out.println(pos3);
+        
+        c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
+        c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
+        c3.setIcon(new ImageIcon("./Assets/" + pos3 + ".jpg"));
+        
     }//GEN-LAST:event_s_input_threeActionPerformed
 
     /**

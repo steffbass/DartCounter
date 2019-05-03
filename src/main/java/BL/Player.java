@@ -108,6 +108,8 @@ public class Player {
 
     public boolean win(Player p) {
         return false;
+        
+        //double out - 1 kann nicht
         //wenn win true is dann soll ein joption pane kommen wo man die statistik noch speichern kann
         // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
         // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
@@ -496,8 +498,600 @@ public class Player {
                 c[2] = "D16";
                 break;
                 
+                  
+                  case 100:
+                c[0] = "T20";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
                 
+                  case 99:
+                c[0] = "T19";
+                c[1] = "10";
+                c[2] = "D16";
+                break;
                 
+                 case 98:
+                c[0] = "T20";
+                c[1] = "D19";
+                c[2] = "-";
+                break;
+                
+                 case 97:
+                c[0] = "T19";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 96:
+                c[0] = "T20";
+                c[1] = "D18";
+                c[2] = "-";
+                break;
+                
+                 case 95:
+                c[0] = "T19";
+                c[1] = "D19";
+                c[2] = "-";
+                break;
+                
+                 case 94:
+                c[0] = "T18";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 93:
+                c[0] = "T19";
+                c[1] = "D18";
+                c[2] = "-";
+                break;
+                
+                 case 92:
+                c[0] = "T20";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                 case 91:
+                c[0] = "T17";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 90:
+                c[0] = "T20";
+                c[1] = "D15";
+                c[2] = "-";
+                break;
+                
+                 case 89:
+                c[0] = "T19";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 88:
+                c[0] = "T20";
+                c[1] = "D14";
+                c[2] = "-";
+                break;
+                
+                  case 87:
+                c[0] = "T17";
+                c[1] = "D18";
+                c[2] = "-";
+                break;
+                
+                  case 86:
+                c[0] = "T18";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 85:
+                c[0] = "T15";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                  case 84:
+                c[0] = "T20";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                  case 83:
+                c[0] = "T17";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                  case 82:
+                c[0] = "50";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 81:
+                c[0] = "T19";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                  case 80:
+                c[0] = "T20";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                  case 79:
+                c[0] = "T19";
+                c[1] = "D11";
+                c[2] = "-";
+                break;
+                
+                   case 78:
+                c[0] = "T18";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                   case 77:
+                c[0] = "T19";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                   case 76:
+                c[0] = "T20";
+                c[1] = "D8";
+                c[2] = "-";
+                break;
+                
+                   case 75:
+                c[0] = "T17";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                   case 74:
+                c[0] = "T14";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                   case 73:
+                c[0] = "T19";
+                c[1] = "D8";
+                c[2] = "-";
+                break;
+                
+                   case 72:
+                c[0] = "T16";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                  case 71:
+                c[0] = "T13";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 70:
+                c[0] = "T18";
+                c[1] = "D8";
+                c[2] = "-";
+                break;
+                
+                  case 69:
+                c[0] = "T19";
+                c[1] = "D6";
+                c[2] = "-";
+                break;
+                
+                  case 68:
+                c[0] = "T16";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                  case 67:
+                c[0] = "T9";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                  case 66:
+                c[0] = "T10";
+                c[1] = "D18";
+                c[2] = "-";
+                break;
+                
+                  case 65:
+                c[0] = "T11";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 64:
+                c[0] = "T16";
+                c[1] = "D8";
+                c[2] = "-";
+                break;
+                
+                  case 63:
+                c[0] = "T13";
+                c[1] = "D12";
+                c[2] = "-";
+                break;
+                
+                  case 62:
+                c[0] = "T10";
+                c[1] = "D16";
+                c[2] = "-";
+                break;
+                
+                  case 61:
+                c[0] = "T15";
+                c[1] = "D8";
+                c[2] = "-";
+                break;
+                
+                  case 60:
+                c[0] = "20";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                  case 59:
+                c[0] = "19";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 58:
+                c[0] = "18";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 57:
+                c[0] = "17";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 56:
+                c[0] = "T16";
+                c[1] = "D4";
+                c[2] = "-";
+                break;
+                
+                 case 55:
+                c[0] = "16";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 54:
+                c[0] = "14";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 53:
+                c[0] = "13";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 52:
+                c[0] = "12";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 51:
+                c[0] = "11";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 50:
+                c[0] = "10";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                case 49:
+                c[0] = "9";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 48:
+                c[0] = "8";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 47:
+                c[0] = "7";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 46:
+                c[0] = "6";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 45:
+                c[0] = "5";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 44:
+                c[0] = "4";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 43:
+                c[0] = "3";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 42:
+                c[0] = "2";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 41:
+                c[0] = "9";
+                c[1] = "D20";
+                c[2] = "-";
+                break;
+                
+                 case 40:
+                c[0] = "D20";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                case 39:
+                c[0] = "19";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 38:
+                c[0] = "18";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 37:
+                c[0] = "17";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 36:
+                c[0] = "16";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 35:
+                c[0] = "15";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 34:
+                c[0] = "14";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 33:
+                c[0] = "13";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 32:
+                c[0] = "12";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 31:
+                c[0] = "11";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                  case 30:
+                c[0] = "10";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                  case 29:
+                c[0] = "9";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 28:
+                c[0] = "8";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 27:
+                c[0] = "7";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 26:
+                c[0] = "6";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 25:
+                c[0] = "5";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 24:
+                c[0] = "4";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 23:
+                c[0] = "3";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 22:
+                c[0] = "2";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 21:
+                c[0] = "1";
+                c[1] = "D10";
+                c[2] = "-";
+                break;
+                
+                 case 20:
+                c[0] = "D10";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                 case 19:
+                c[0] = "9";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 18:
+                c[0] = "8";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 17:
+                c[0] = "7";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 16:
+                c[0] = "6";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 15:
+                c[0] = "5";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 14:
+                c[0] = "4";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 13:
+                c[0] = "3";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 12:
+                c[0] = "2";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 11:
+                c[0] = "1";
+                c[1] = "D5";
+                c[2] = "-";
+                break;
+                
+                   case 10:
+                c[0] = "D5";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                   case 9:
+                c[0] = "1";
+                c[1] = "D4";
+                c[2] = "-";
+                break;
+                
+                 case 8:
+                c[0] = "D4";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                 case 7:
+                c[0] = "1";
+                c[1] = "D§";
+                c[2] = "-";
+                break;
+                
+                 case 6:
+                c[0] = "D3";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                 case 5:
+                c[0] = "1";
+                c[1] = "D2";
+                c[2] = "-";
+                break;
+                
+                 case 4:
+                c[0] = "D2";
+                c[1] = "-";
+                c[2] = "-";
+                break;
+                
+                 case 3:
+                c[0] = "1";
+                c[1] = "D1";
+                c[2] = "-";
+                break;
+                
+                 case 2:
+                c[0] = "D1";
+                c[1] = "-";
+                c[2] = "-";
+                break;
                 
             default:
                 c[0] = "-";

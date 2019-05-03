@@ -268,121 +268,236 @@ public class Player {
                 c[2] = "D20";
                 break;
 
-                  case 138:
+            case 138:
                 c[0] = "T20";
                 c[1] = "T18";
                 c[2] = "D12";
                 break;
 
-                
-                  case 137:
+            case 137:
                 c[0] = "T20";
                 c[1] = "T19";
                 c[2] = "D10";
                 break;
 
-                
-                  case 136:
+            case 136:
                 c[0] = "T20";
                 c[1] = "T20";
                 c[2] = "D8";
                 break;
 
-                  case 135:
+            case 135:
                 c[0] = "T20";
                 c[1] = "T17";
                 c[2] = "D12";
                 break;
 
-                  case 134:
+            case 134:
                 c[0] = "T20";
                 c[1] = "T16";
                 c[2] = "D13";
                 break;
 
-                  case 133:
+            case 133:
                 c[0] = "T20";
                 c[1] = "T19";
                 c[2] = "D8";
                 break;
 
-                  case 132:
+            case 132:
                 c[0] = "T20";
                 c[1] = "T16";
                 c[2] = "D12";
                 break;
-                
-                  case 131:
+
+            case 131:
                 c[0] = "T19";
                 c[1] = "T14";
                 c[2] = "D16";
                 break;
-                
-                  case 130:
+
+            case 130:
                 c[0] = "T20";
                 c[1] = "T20";
                 c[2] = "D5";
                 break;
 
-                 case 129:
+            case 129:
                 c[0] = "T20";
                 c[1] = "T16";
                 c[2] = "D12";
                 break;
-                
-                 case 128:
+
+            case 128:
                 c[0] = "T18";
                 c[1] = "T14";
                 c[2] = "D16";
                 break;
-                
-                 case 127:
+
+            case 127:
                 c[0] = "T20";
                 c[1] = "T17";
                 c[2] = "D8";
                 break;
-                
-                 case 126:
+
+            case 126:
                 c[0] = "T19";
                 c[1] = "T19";
                 c[2] = "D6";
                 break;
-                
-                 case 125:
+
+            case 125:
                 c[0] = "T18";
                 c[1] = "T19";
                 c[2] = "D7";
                 break;
-                
-                 case 124:
+
+            case 124:
                 c[0] = "T20";
                 c[1] = "T14";
                 c[2] = "D11";
                 break;
-                
-                 case 123:
+
+            case 123:
                 c[0] = "T19";
                 c[1] = "T16";
                 c[2] = "D9";
                 break;
-                
-                 case 122:
+
+            case 122:
                 c[0] = "T18";
                 c[1] = "T18";
                 c[2] = "D7";
                 break;
-                
-                 case 121:
+
+            case 121:
                 c[0] = "T20";
                 c[1] = "T11";
                 c[2] = "D14";
                 break;
-                
-                 case 120:
+
+            case 120:
                 c[0] = "T20";
                 c[1] = "20";
                 c[2] = "D20";
                 break;
+
+            case 119:
+                c[0] = "T19";
+                c[1] = "T12";
+                c[2] = "D13";
+                break;
+
+                 case 118:
+                c[0] = "T20";
+                c[1] = "18";
+                c[2] = "D20";
+                break;
+                
+                 case 117:
+                c[0] = "T19";
+                c[1] = "20";
+                c[2] = "D20";
+                break;
+                
+                 case 116:
+                c[0] = "T19";
+                c[1] = "19";
+                c[2] = "D20";
+                break;
+                
+                 case 115:
+                c[0] = "T20";
+                c[1] = "15";
+                c[2] = "D20";
+                break;
+                
+                 case 114:
+                c[0] = "T19";
+                c[1] = "17";
+                c[2] = "D20";
+                break;
+                
+                 case 113:
+                c[0] = "T19";
+                c[1] = "16";
+                c[2] = "D20";
+                break;
+                
+                 case 112:
+                c[0] = "T20";
+                c[1] = "T12";
+                c[2] = "D8";
+                break;
+                
+                 case 111:
+                c[0] = "T19";
+                c[1] = "14";
+                c[2] = "D20";
+                break;
+                
+                 case 110:
+                c[0] = "T20";
+                c[1] = "T10";
+                c[2] = "D10";
+                break;
+                
+                 case 109:
+                c[0] = "T20";
+                c[1] = "9";
+                c[2] = "D20";
+                break;
+                
+                  case 108:
+                c[0] = "T20";
+                c[1] = "16";
+                c[2] = "D16";
+                break;
+                
+                  case 107:
+                c[0] = "T19";
+                c[1] = "T10";
+                c[2] = "D10";
+                break;
+                
+                  case 106:
+                c[0] = "T20";
+                c[1] = "T10";
+                c[2] = "D8";
+                break;
+                
+                  case 105:
+                c[0] = "T20";
+                c[1] = "13";
+                c[2] = "D16";
+                break;
+                
+                  case 104:
+                c[0] = "T19";
+                c[1] = "15";
+                c[2] = "D16";
+                break;
+                
+                  case 103:
+                c[0] = "T19";
+                c[1] = "6";
+                c[2] = "D20";
+                break;
+                
+                  case 102:
+                c[0] = "T20";
+                c[1] = "10";
+                c[2] = "D16";
+                break;  
+                  
+                  case 101:
+                c[0] = "T20";
+                c[1] = "9";
+                c[2] = "D16";
+                break;
+                
+                
+                
                 
             default:
                 c[0] = "-";

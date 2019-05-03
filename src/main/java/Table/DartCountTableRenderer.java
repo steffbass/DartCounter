@@ -56,6 +56,8 @@ public class DartCountTableRenderer implements TableCellRenderer {
                 label.setForeground(Color.WHITE);
 
         }
+        
+       
         return label;
     }
 

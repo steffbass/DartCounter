@@ -22,6 +22,7 @@ public class DartGame extends javax.swing.JFrame {
      * Creates new form DartGame
      */
     private int format = 0;
+    private Player currentPlayer;
 
     private DartCountModel bl = new DartCountModel();
     private Color bc = new Color(46, 53, 57);
@@ -51,6 +52,7 @@ public class DartGame extends javax.swing.JFrame {
         c1.setOpaque(true);
         c2.setOpaque(true);
         c3.setOpaque(true);
+     
 
     }
 
@@ -497,6 +499,7 @@ public class DartGame extends javax.swing.JFrame {
                 wurf = Integer.parseInt(geworfen);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
+                
             }
 
             if (wurf < 0 || wurf > 180) {
@@ -513,16 +516,19 @@ public class DartGame extends javax.swing.JFrame {
         // TODO add your handling code here:
         //felder input
 
+        currentPlayer = bl.getCurrent();
+        
         if (format != 0 && bl.size() != 0) {
             int value = 0;
 
             for (int i = 1; i < 4; i++) {
                 String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
+               
                 try {
-                    value = Integer.parseInt(feld);
+                    currentPlayer.throw_input_einzeln(feld);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
-                    break;
+                    i--;
                 }
             }
         } else {

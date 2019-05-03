@@ -12,25 +12,25 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author stefan
  */
-public class DartCountModel extends AbstractTableModel{
+public class DartCountModel extends AbstractTableModel {
 
-       private ArrayList <Player> player = new ArrayList();
-    private String[] colnames = {"Name","Legs","Score",""};
-    
+    private ArrayList<Player> player = new ArrayList();
+    private String[] colnames = {"Name", "Legs", "Score", ""};
+
     @Override
     public int getRowCount() {
-      return player.size();
+        return player.size();
     }
 
     @Override
     public int getColumnCount() {
-       return colnames.length;
+        return colnames.length;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       Player p = (Player) player.get(rowIndex);
-       return p;   
+        Player p = (Player) player.get(rowIndex);
+        return p;
     }
 
     @Override
@@ -38,15 +38,22 @@ public class DartCountModel extends AbstractTableModel{
         return colnames[column];
     }
 
-    public void add(Player t)
-    {
-     player.add(t);
-     this.fireTableRowsInserted(player.size()-1,player.size()-1);
+    public void add(Player t) {
+        player.add(t);
+        this.fireTableRowsInserted(player.size() - 1, player.size() - 1);
     }
-    
-    
-    public int size()
-    {
-     return player.size();
+
+    public int size() {
+        return player.size();
+    }
+
+    public Player getCurrent() {
+        Player p = null;
+        for (int i = 0; i < player.size(); i++) {
+            if (player.get(i).isThrowing()) {
+                p = player.get(i);
+            }
+        }
+        return p;
     }
 }

@@ -85,9 +85,11 @@ public class Player {
     format-=value3;
    }
    
-   public boolean checkouted(Player p)
+   public boolean win(Player p)
    {
     return false;
+    //wenn win true is dann soll ein joption pane kommen wo man die statistik noch speichern kann
+    // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
    }
     
     

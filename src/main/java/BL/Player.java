@@ -96,5 +96,17 @@ public class Player {
     {
       score = format;
     }
+    
+    public void reset()
+    {
+      name = "";
+    format = 0;
+     würfe = 0;
+     score = 0;
+    doubleqoute = 0;
+    legs = 0;
+    throwing = false;
+     finnished = false;
+    }
   
 }

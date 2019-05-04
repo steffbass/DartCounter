@@ -1148,4 +1148,29 @@ public class DartCountModel extends AbstractTableModel {
 
         return c;
     }
+
+    public void restart() {
+       int size = player.size();
+       
+        for (int i = 0; i < size; i++) {
+          Player p = player.get(i);
+            p.reset();
+        }
+            player.removeAll(player);
+           fireTableDataChanged();;
+        }
+             
+        
+
+    
+    
+    public void save()
+    {
+    
+    }
+    
+    public void continuegame()
+    {
+    
+    }
 }

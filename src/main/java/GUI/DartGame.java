@@ -23,7 +23,7 @@ public class DartGame extends javax.swing.JFrame {
      */
     private int format = 0;
     private Player currentPlayer;
-    String[] options = new String[]{"Beenden","Neu start", "Speichern & weiter spielen"};
+    String[] options = new String[]{"Beenden", "Neu start", "Speichern & weiter spielen"};
 
     private DartCountModel bl = new DartCountModel();
     private Color bc = new Color(46, 53, 57);
@@ -479,7 +479,7 @@ public class DartGame extends javax.swing.JFrame {
 
     private void s_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_rActionPerformed
         // TODO add your handling code here:
-
+        bl.restart();
 
     }//GEN-LAST:event_s_rActionPerformed
 
@@ -495,11 +495,10 @@ public class DartGame extends javax.swing.JFrame {
         chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
-        System.out.println(pos1);
+
         pos2 = chelp[1];
-        System.out.println(pos2);
+
         pos3 = chelp[2];
-        System.out.println(pos3);
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
@@ -514,21 +513,28 @@ public class DartGame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
 
                 } else {
-                    bl.throw_input_value(currentPlayer,wurf);
+                    bl.throw_input_value(currentPlayer, wurf);
 
                     try {
                         bl.checkwin_einfach(currentPlayer);
-                       
+
                         if (currentPlayer.isFinnished()) {
 
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                                     null, options, options[0]);
-                            
-                            if(response == 0){System.exit(1);}
-                      //      if(response == 1){restart}
-                         //     if(response == 1){speichern + neues leg}
-                         
+
+                            if (response == 0) {
+                                System.exit(1);
+                            }
+                            if (response == 1) {
+                                bl.restart();
+                            }
+                            if (response == 2) {
+                                bl.save();
+                                bl.continuegame();
+                            }
+
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
@@ -542,11 +548,11 @@ public class DartGame extends javax.swing.JFrame {
                     chelp = bl.getCheckout(currentPlayer);
 
                     pos1 = chelp[0];
-                    System.out.println(pos1);
+                   
                     pos2 = chelp[1];
-                    System.out.println(pos2);
+                  
                     pos3 = chelp[2];
-                    System.out.println(pos3);
+                   
 
                     c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
                     c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
@@ -582,7 +588,6 @@ public class DartGame extends javax.swing.JFrame {
         pos1 = chelp[0];
         pos2 = chelp[1];
         pos3 = chelp[2];
-       
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
@@ -595,7 +600,7 @@ public class DartGame extends javax.swing.JFrame {
                 String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
 
                 try {
-                    bl.throw_input_einzeln(currentPlayer,feld);
+                    bl.throw_input_einzeln(currentPlayer, feld);
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
                     i--;
@@ -613,11 +618,11 @@ public class DartGame extends javax.swing.JFrame {
         chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
-        System.out.println(pos1);
+       
         pos2 = chelp[1];
-        System.out.println(pos2);
+      
         pos3 = chelp[2];
-        System.out.println(pos3);
+     
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));

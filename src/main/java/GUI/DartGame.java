@@ -636,7 +636,7 @@ public class DartGame extends javax.swing.JFrame {
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c2.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c3.setIcon(new ImageIcon("./Assets/-.jpg"));
-                                return;
+                                break;
                             }
                             if (response == 2) {
                                 bl.save();
@@ -644,13 +644,14 @@ public class DartGame extends javax.swing.JFrame {
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c2.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c3.setIcon(new ImageIcon("./Assets/-.jpg"));
-                                return;
+                                break;
                             }
 
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen oder ohne Double ausgemacht");
-                      
+                        currentPlayer.setFormat(currentPlayer.getScore());
+                       break;
                     }
 
                 } catch (Exception e) {

@@ -506,9 +506,7 @@ public class DartGame extends javax.swing.JFrame {
         chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
-
         pos2 = chelp[1];
-
         pos3 = chelp[2];
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
@@ -522,13 +520,11 @@ public class DartGame extends javax.swing.JFrame {
                 wurf = Integer.parseInt(geworfen);
                 if (wurf < 0 || wurf > 180) {
                     JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
-
                 } else {
                     bl.throw_input_value(currentPlayer, wurf);
-
                     try {
                         bl.checkwin_einfach(currentPlayer);
-
+                        
                         if (currentPlayer.isFinnished()) {
 
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
@@ -559,8 +555,7 @@ public class DartGame extends javax.swing.JFrame {
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
-                        System.out.println(p);
-                        p.printStackTrace();
+                      
                     }
 
                     currentPlayer.save();
@@ -622,6 +617,41 @@ public class DartGame extends javax.swing.JFrame {
 
                 try {
                     bl.throw_input_einzeln(currentPlayer, feld);
+                    
+                     try {
+                                    bl.checkwin_doppel(currentPlayer, feld);
+                        if (currentPlayer.isFinnished()) {
+
+                            int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
+                                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                                    null, options, options[0]);
+
+                            if (response == 0) {
+                                System.exit(1);
+
+                            }
+                            if (response == 1) {
+                                bl.restart();
+                                format = 0;
+                                c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c2.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c3.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                return;
+                            }
+                            if (response == 2) {
+                                bl.save();
+                                bl.continuegame();
+                                c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c2.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c3.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                return;
+                            }
+
+                        }
+                    } catch (Exception p) {
+                        JOptionPane.showMessageDialog(null, "Überworfen oder ohne Double ausgemacht");
+                      
+                    }
 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Ungültiger Wert!");

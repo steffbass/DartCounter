@@ -84,7 +84,7 @@ public class DartCountModel extends AbstractTableModel {
         if (p.getFormat() == 0) {
             p.setFinnished(true);
             fireTableDataChanged();
-        } else if (p.getFormat() < 2) {
+        } else if (p.getFormat() < 1) {
             p.setFormat(p.getScore());
             p.setFinnished(false);
             throw new Exception("Überworfen");
@@ -94,12 +94,34 @@ public class DartCountModel extends AbstractTableModel {
 
     }
 
-    public boolean checkwin_doppel(Player p) throws Exception {
-        return false;
+    public boolean checkwin_doppel(Player p, String feld) throws Exception {
+        int input = 0;
+        String type = "";
+        if (feld.length() > 2) {
+            type = feld.substring(0, 1);
+            input = Integer.parseInt(feld.substring(1));
+        } else {
+            input = Integer.parseInt(feld);
+        }
+
+        if (this.checkwin_einfach(p)) {
+            if (type.equalsIgnoreCase("D")) {
+                p.setFinnished(true);
+            } else {
+                p.setFinnished(false);
+                p.setFormat(p.getFormat());
+                throw new Exception("Checkout ohne Double!");
+            }
+
+        }
+
+        //arbeitsweiße
+        // check einzeln , überprüfüfen ob feld doppelt war
         //double out - 1 kann nicht
         //wenn win true is dann soll ein joption pane kommen wo man die statistik noch speichern kann
         // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
         // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
+        return p.isFinnished();
     }
 
     public void throw_input_einzeln(Player p, String value) throws Exception {
@@ -136,28 +158,16 @@ public class DartCountModel extends AbstractTableModel {
             int format = p.getFormat();
             p.setFormat(format - val);
         } else {
-            
+
             int thrown = Integer.parseInt(value);
             if (thrown > 20) {
-                throw new Exception("Wert ungültig");}
-            else{
-            int format = p.getFormat();
-            
-            p.setFormat(format - thrown);}
+                throw new Exception("Wert ungültig");
+            } else {
+                int format = p.getFormat();
+
+                p.setFormat(format - thrown);
+            }
         }
-    }
-
-    public void trow_gui(Player p, int value1, int value2, int value3) {
-        last = player.indexOf(p);
-        int würfe = p.getWürfe();
-        p.setWürfe(würfe + 3);
-        int format = p.getFormat();
-
-        format -= value1;
-        format -= value2;
-        format -= value3;
-
-        p.setFormat(format);
     }
 
     public void throw_input_value(Player p, int value) {
@@ -1183,12 +1193,15 @@ public class DartCountModel extends AbstractTableModel {
             }
             p.playon();
             //bug here // extra variable um spieler mitzuspeichern wer letzes drann war
-            h = player.get(last + 1);
-            if (player.size() == last) {
-                h = player.get(0);
+           
+            if(player.size() == 1){ h = player.get(0);}
+            
+          else if (player.size() == last) {
+                h = player.get(0);              
             }
+            else{ h = player.get(last + 1);}
 
-            h.setThrowing(true);
+             h.setThrowing(true);
         }
         fireTableDataChanged();;
     }

@@ -53,6 +53,8 @@ public class DartGame extends javax.swing.JFrame {
         c1.setIcon(new ImageIcon("./Assets/-.jpg"));
         c2.setIcon(new ImageIcon("./Assets/-.jpg"));
         c3.setIcon(new ImageIcon("./Assets/-.jpg"));
+
+        debug.setText("Debug für mauszeiger");
     }
 
     /**
@@ -95,6 +97,7 @@ public class DartGame extends javax.swing.JFrame {
         s_r = new javax.swing.JMenuItem();
         s_input_val = new javax.swing.JMenuItem();
         s_input_three = new javax.swing.JMenuItem();
+        debug = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dart counter");
@@ -355,6 +358,13 @@ public class DartGame extends javax.swing.JFrame {
 
         jMenuBar1.add(Steuerung);
 
+        debug.setText("jMenu1");
+        debug.setEnabled(false);
+        debug.setFocusable(false);
+        debug.setRequestFocusEnabled(false);
+        debug.setVerifyInputWhenFocusTarget(false);
+        jMenuBar1.add(debug);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -549,6 +559,8 @@ public class DartGame extends javax.swing.JFrame {
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
+                        System.out.println(p);
+                        p.printStackTrace();
                     }
 
                     currentPlayer.save();
@@ -571,8 +583,7 @@ public class DartGame extends javax.swing.JFrame {
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
-                System.out.println(e);
-                e.printStackTrace();
+
             }
 
         } else {
@@ -587,7 +598,7 @@ public class DartGame extends javax.swing.JFrame {
         //felder input
 
         currentPlayer = bl.getCurrent();
-
+        String feld = "";
         String pos1 = "";
         String pos2 = "";
         String pos3 = "";
@@ -607,10 +618,11 @@ public class DartGame extends javax.swing.JFrame {
             int value = 0;
 
             for (int i = 1; i < 4; i++) {
-                String feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
+                feld = JOptionPane.showInputDialog("Getroffenes Feld beim " + i + ". Wurf");
 
                 try {
                     bl.throw_input_einzeln(currentPlayer, feld);
+
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, "Ungültiger Wert!");
                     i--;
@@ -686,6 +698,7 @@ public class DartGame extends javax.swing.JFrame {
     private javax.swing.JLabel c3;
     private javax.swing.JPanel checkout;
     private javax.swing.JButton confirm;
+    private javax.swing.JMenu debug;
     private javax.swing.JMenuItem f_301;
     private javax.swing.JMenuItem f_501;
     private javax.swing.JMenuBar jMenuBar1;

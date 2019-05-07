@@ -19,10 +19,12 @@ public class Player {
     private int legs = 0;
     private boolean throwing = false;
     private boolean finnished = false;
+    private final int saveformat;
 
     public Player(String name, int format) {
         this.name = name;
         this.format = format;
+        saveformat = format;
     }
 
     public String getName() {
@@ -81,6 +83,11 @@ public class Player {
         this.legs = legs;
     }
 
+    public int getSaveformat() {
+        return saveformat;
+    }
+
+    
     
 
     public void setFormat(int format) {
@@ -108,5 +115,14 @@ public class Player {
     throwing = false;
      finnished = false;
     }
+    
+    public void playon()
+    {
+        format = saveformat;
+        score = format;
+        finnished = false;
+        throwing = false;
+    }
+            
   
 }

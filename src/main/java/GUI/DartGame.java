@@ -480,6 +480,7 @@ public class DartGame extends javax.swing.JFrame {
     private void s_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_rActionPerformed
         // TODO add your handling code here:
         bl.restart();
+        format = 0;
 
     }//GEN-LAST:event_s_rActionPerformed
 
@@ -526,13 +527,23 @@ public class DartGame extends javax.swing.JFrame {
 
                             if (response == 0) {
                                 System.exit(1);
+
                             }
                             if (response == 1) {
                                 bl.restart();
+                                format = 0;
+                                c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c2.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c3.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                return;
                             }
                             if (response == 2) {
                                 bl.save();
                                 bl.continuegame();
+                                c1.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c2.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                c3.setIcon(new ImageIcon("./Assets/-.jpg"));
+                                return;
                             }
 
                         }
@@ -548,11 +559,10 @@ public class DartGame extends javax.swing.JFrame {
                     chelp = bl.getCheckout(currentPlayer);
 
                     pos1 = chelp[0];
-                   
+
                     pos2 = chelp[1];
-                  
+
                     pos3 = chelp[2];
-                   
 
                     c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
                     c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));
@@ -618,11 +628,10 @@ public class DartGame extends javax.swing.JFrame {
         chelp = bl.getCheckout(currentPlayer);
 
         pos1 = chelp[0];
-       
+
         pos2 = chelp[1];
-      
+
         pos3 = chelp[2];
-     
 
         c1.setIcon(new ImageIcon("./Assets/" + pos1 + ".jpg"));
         c2.setIcon(new ImageIcon("./Assets/" + pos2 + ".jpg"));

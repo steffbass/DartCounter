@@ -11,14 +11,44 @@ package BL;
  */
 public class Player {
 
+    /**
+     * Name von spieler
+     */
     private String name;
+
+    /**
+     * Spielformat
+     */
     private int format;
+
+    /**
+     * Anzahl von Getätigten Würfen
+     */
     private int würfe = 0;
+
+    /**
+     * Wert von Punkten der nach 3 Würfen erst aktualisiert wird
+     */
     private int score = 0;
-    private double doubleqoute = 0;
+
+    /**
+     * Anzahl der gewonnen Legs
+     */
     private int legs = 0;
+
+    /**
+     * Boolean ob man gerade an der Reihe ist oder nicht
+     */
     private boolean throwing = false;
+
+    /**
+     * Boolean ob man das Spiel beendet hat oder nicht
+     */
     private boolean finnished = false;
+
+    /**
+     * Backup von Spielformat
+     */
     private final int saveformat;
 
     public Player(String name, int format) {
@@ -41,10 +71,6 @@ public class Player {
 
     public int getScore() {
         return score;
-    }
-
-    public double getDoubleqoute() {
-        return doubleqoute;
     }
 
     public int getLegs() {
@@ -75,10 +101,6 @@ public class Player {
         this.score = score;
     }
 
-    public void setDoubleqoute(double doubleqoute) {
-        this.doubleqoute = doubleqoute;
-    }
-
     public void setLegs(int legs) {
         this.legs = legs;
     }
@@ -87,9 +109,6 @@ public class Player {
         return saveformat;
     }
 
-    
-    
-
     public void setFormat(int format) {
         this.format = format;
     }
@@ -97,32 +116,35 @@ public class Player {
     public void setFinnished(boolean finnished) {
         this.finnished = finnished;
     }
-   
 
-    public void save()
-    {
-      score = format;
+    /**
+     * Methode um die geworfenen Punkte bei korrekten Würfen abzuspeichern
+     */
+    public void save() {
+        score = format;
     }
-    
-    public void reset()
-    {
-      name = "";
-    format = 0;
-     würfe = 0;
-     score = 0;
-    doubleqoute = 0;
-    legs = 0;
-    throwing = false;
-     finnished = false;
+
+    /**
+     * Attribute werden wieder auf Standard werte Gesetzt
+     */
+    public void reset() {
+        name = "";
+        format = 0;
+        würfe = 0;
+        score = 0;
+        legs = 0;
+        throwing = false;
+        finnished = false;
     }
-    
-    public void playon()
-    {
+
+    /**
+     * Methode um das Weiterspielen eines Spieles zu ermöglichen
+     */
+    public void playon() {
         format = saveformat;
         score = format;
         finnished = false;
         throwing = false;
     }
-            
-  
+
 }

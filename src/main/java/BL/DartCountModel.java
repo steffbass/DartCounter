@@ -5,6 +5,9 @@
  */
 package BL;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -14,8 +17,19 @@ import javax.swing.table.AbstractTableModel;
  */
 public class DartCountModel extends AbstractTableModel {
 
+    /**
+     * Arraylist von Spielern
+     */
     private ArrayList<Player> player = new ArrayList();
+
+    /**
+     * Spalten von der Tabelle
+     */
     private String[] colnames = {"Name", "Legs", "Score", ""};
+
+    /**
+     * Index des Arrays von dem zuletzt werfenden Spieler
+     */
     private int last;
 
     @Override
@@ -39,6 +53,11 @@ public class DartCountModel extends AbstractTableModel {
         return colnames[column];
     }
 
+    /**
+     * Hinzufügen von Spieler zu der Arraylist
+     *
+     * @param t Spieler
+     */
     public void add(Player t) {
         player.add(t);
         this.fireTableRowsInserted(player.size() - 1, player.size() - 1);
@@ -48,6 +67,11 @@ public class DartCountModel extends AbstractTableModel {
         return player.size();
     }
 
+    /**
+     * Gibt Spieler zurück der zurzeit an der Reihe ist
+     *
+     * @return gibt derzeitigen Spieler zurück
+     */
     public Player getCurrent() {
         Player p = null;
         for (int i = 0; i < player.size(); i++) {
@@ -58,6 +82,11 @@ public class DartCountModel extends AbstractTableModel {
         return p;
     }
 
+    /**
+     * Bestimmt den nächsten Spieler der an der Reihe ist
+     *
+     * @param p Player
+     */
     public void next(Player p) {
 
         p.setThrowing(false);
@@ -79,6 +108,14 @@ public class DartCountModel extends AbstractTableModel {
         fireTableDataChanged();
     }
 
+    /**
+     * Kontrolliert ob der Spieler gewonnen hat wenn der geworfene Wert als
+     * gesamtes eingegeben wird
+     *
+     * @param p Player
+     * @return ob Spieler gewonnen hat oder nicht
+     * @throws Exception wenn man sich überworfen hat
+     */
     public boolean checkwin_einfach(Player p) throws Exception {
 
         if (p.getFormat() == 0) {
@@ -94,6 +131,15 @@ public class DartCountModel extends AbstractTableModel {
 
     }
 
+    /**
+     * Überprüfung ob man gewonnen hat wenn man die Felder einzeln eingibt
+     *
+     * @param p Spieler der zurzeit drann ist
+     * @param feld geworfene Feld des Spielers
+     * @return Boolean ob man gewonnen hat oder nicht
+     * @throws Exception wenn man sich überworfen hat oder nicht mit Double aus
+     * gemacht hat
+     */
     public boolean checkwin_doppel(Player p, String feld) throws Exception {
         int input = 0;
         String type = "";
@@ -115,15 +161,15 @@ public class DartCountModel extends AbstractTableModel {
 
         }
 
-        //arbeitsweiße
-        // check einzeln , überprüfüfen ob feld doppelt war
-        //double out - 1 kann nicht
-        //wenn win true is dann soll ein joption pane kommen wo man die statistik noch speichern kann
-        // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
-        // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
         return p.isFinnished();
     }
 
+    /**
+     * Eingabe des getroffenes Feldes und abzug von Punktekonto
+     * @param p Spieler der an der Reihe ist
+     * @param value geworfene Feld
+     * @throws Exception wenn das Feld ungültig ist oder nicht existiert
+     */
     public void throw_input_einzeln(Player p, String value) throws Exception {
         int würfe = p.getWürfe();
         würfe++;
@@ -170,6 +216,12 @@ public class DartCountModel extends AbstractTableModel {
         }
     }
 
+    /**
+     * Eingabe von geworfenen Punkte
+     * Abzug von Punktekonto
+     * @param p Spieler der an der Reihe ist
+     * @param value geworfene Punkte
+     */
     public void throw_input_value(Player p, int value) {
         last = player.indexOf(p);
         int würfe = p.getWürfe();
@@ -180,6 +232,11 @@ public class DartCountModel extends AbstractTableModel {
         p.setFormat(format);
     }
 
+    /**
+     * Überprüft wie der Spieler seine restlichen Punkte auf bestmöglichen Weg ausmachen kann
+     * @param p Spieler der an der Reihe ist
+     * @return String Array mit den Einzelnen Feldern die noch getroffen werden müssen
+     */
     public String[] getCheckout(Player p) {
 
         String[] c = new String[3];
@@ -1177,10 +1234,36 @@ public class DartCountModel extends AbstractTableModel {
         fireTableDataChanged();;
     }
 
-    public void save() {
+    /**
+     * Abspeicherung von Statistik von Allen Spielern in einer .txt
+     * @throws IOException 
+     */
+    public void save() throws IOException {
+
+        for (int i = 0; i < player.size(); i++) {
+            Player p = player.get(i);
+            String name = p.getName();
+            int würfe = p.getWürfe();
+            int überbleib = p.getFormat();
+            int leg = p.getLegs();
+            double durch = p.getSaveformat() / p.getWürfe();
+
+        }
+
+        // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
+        // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
+        String str = "";
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Output/statistik.txt"));
+        writer.write(str);
+
+        writer.close();
 
     }
 
+    /**
+     * Methode um weiterzuspielen
+     */
     public void continuegame() {
         int size = player.size();
         Player h;
@@ -1193,16 +1276,39 @@ public class DartCountModel extends AbstractTableModel {
             }
             p.playon();
             //bug here // extra variable um spieler mitzuspeichern wer letzes drann war
-           
-            if(player.size() == 1){ h = player.get(0);}
-            
-          else if (player.size() == last) {
-                h = player.get(0);              
-            }
-            else{ h = player.get(last + 1);}
 
-             h.setThrowing(true);
+            if (player.size() == 1) {
+                h = player.get(0);
+            } else if (player.size() == last) {
+                h = player.get(0);
+            } else {
+                h = player.get(last + 1);
+            }
+
+            h.setThrowing(true);
         }
         fireTableDataChanged();;
+    }
+
+    /**
+     * Abspielen von Game On Sound
+     */
+    public void gamemon() {
+
+    }
+
+    /**
+     * Abspielen von 180 Sound wenn 180 Punkte geworfen wurden
+     * @param score 
+     */
+    public void score180(int score) {
+
+    }
+
+    /**
+     * Abspielen von wenn Spiel beendet ist
+     */
+    public void gameend() {
+
     }
 }

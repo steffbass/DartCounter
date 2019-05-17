@@ -6,12 +6,18 @@
 package BL;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javafx.util.converter.LocalDateTimeStringConverter;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -24,6 +30,7 @@ public class DartCountModel extends AbstractTableModel {
      * Arraylist von Spielern
      */
     private ArrayList<Player> player = new ArrayList();
+    
 
     /**
      * Spalten von der Tabelle
@@ -1303,24 +1310,77 @@ writer.write("\n");
     }
 
     /**
-     * Abspielen von Game On Sound
+     * Abspielen von Game On Sound mittels Thread
      */
-    public void gamemon() {
-
+    public static synchronized void gamemon() {
+        
+       new Thread(new Runnable() { 
+            public void run() {     
+                Musikplayer mp = new Musikplayer();
+               mp.dateiAnspielen("./audio/gameon.mp3");   
+                System.out.println("Game on!");
+           }
+       }).start();
+       
     }
 
     /**
-     * Abspielen von 180 Sound wenn 180 Punkte geworfen wurden
-     * @param score 
+     * Abspielen von 180 Sound wenn 180 Punkte geworfen wurden - Thread
+     * @param score übergabe von geworfenen Punkten
      */
     public void score180(int score) {
-
+        
+ if(score == 180)
+ {
+   new Thread(new Runnable() { 
+            public void run() {     
+                Musikplayer mp = new Musikplayer();
+               mp.dateiAnspielen("./audio/s_180.mp3");   
+                System.out.println("180");
+           }
+       }).start();
+       
+ }
     }
 
     /**
-     * Abspielen von wenn Spiel beendet ist
+     * Abspielen von wenn Spiel beendet ist - Thread
      */
     public void gameend() {
-
+  new Thread(new Runnable() { 
+            public void run() {     
+                Musikplayer mp = new Musikplayer();
+               mp.dateiAnspielen("./audio/end.mp3");   
+                System.out.println("End");
+           }
+       }).start();
+       
     }
+
+    /**
+     * Speichert Sieger von Leg in die Datenbank
+     * @param current der Spieler der gewonnen hat
+     * @throws SQLException 
+     */
+    
+   public void saveToDatabase(Player current) throws SQLException{
+//      Player win = null;
+//      
+//        for (Player player1 : player) {
+//            if(player1.isFinnished()){win=player1;
+//           
+//        }
+//        try{
+//       
+//         
+//        DataBaseConnection db = DataBaseConnection.getInstance();  
+//            
+//         db.insert(win);
+//        }catch(Exception e){e.printStackTrace();}
+//        
+//        
+//        }
+   }
 }
+    
+

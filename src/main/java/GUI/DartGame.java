@@ -572,12 +572,15 @@ public class DartGame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Ungültige Anzahl an Punkten!");
                 } else {
                     bl.throw_input_value(currentPlayer, wurf);
+                    bl.score180(wurf);
                     try {
                         bl.checkwin_einfach(currentPlayer);
                         
                         if (currentPlayer.isFinnished()) {
                             
                             bl.gameend();
+                            bl.saveToDatabase(bl.getCurrent());
+                         
 
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
@@ -588,6 +591,7 @@ public class DartGame extends javax.swing.JFrame {
 
                             }
                             if (response == 1) {
+                                bl.save();
                                 bl.restart();
                                 format = 0;
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));
@@ -682,6 +686,7 @@ public class DartGame extends javax.swing.JFrame {
                         if (currentPlayer.isFinnished()) {
                             
                             bl.gameend();
+                            bl.saveToDatabase(bl.getCurrent());
 
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
@@ -692,6 +697,7 @@ public class DartGame extends javax.swing.JFrame {
 
                             }
                             if (response == 1) {
+                                bl.save();
                                 bl.restart();
                                 format = 0;
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));

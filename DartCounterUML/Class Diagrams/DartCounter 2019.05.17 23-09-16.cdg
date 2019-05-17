@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="DartCounter">
+  <ClassDiagramComponents>
+    <Class name="DataBaseConnection" package="BL" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="theInstance" type="DataBaseConnection" visibility="private" isStatic="true"/>
+        <Field name="conn" type="Connection" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="DataBaseConnection" visibility="public" isStatic="true" isSynchronized="true"/>
+        <Method name="insert" returnType="void" visibility="public">
+          <Argument type="Player" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Musikplayer" package="BL" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="player" type="AdvancedPlayer" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="dateiAnspielen" returnType="void" visibility="public">
+          <Argument type="String" name="dateiname"/>
+        </Method>
+        <Method name="starteAbspielen" returnType="void" visibility="public">
+          <Argument type="String" name="dateiname"/>
+        </Method>
+        <Method name="stop" returnType="void" visibility="public"/>
+        <Method name="playerVorbereiten" returnType="void" visibility="private">
+          <Argument type="String" name="dateiname"/>
+        </Method>
+        <Method name="gibEingabestream" returnType="InputStream" visibility="private">
+          <Argument type="String" name="dateiname"/>
+        </Method>
+        <Method name="erzeugeAudiogeraet" returnType="AudioDevice" visibility="private"/>
+        <Method name="killPlayer" returnType="void" visibility="private"/>
+        <Method name="meldeProblem" returnType="void" visibility="private">
+          <Argument type="String" name="dateiname"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Player" package="BL" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="format" type="int" visibility="private"/>
+        <Field name="würfe" type="int" visibility="private"/>
+        <Field name="score" type="int" visibility="private"/>
+        <Field name="legs" type="int" visibility="private"/>
+        <Field name="throwing" type="boolean" visibility="private"/>
+        <Field name="finnished" type="boolean" visibility="private"/>
+        <Field name="saveformat" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="format"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getFormat" returnType="int" visibility="public"/>
+        <Method name="getWürfe" returnType="int" visibility="public"/>
+        <Method name="getScore" returnType="int" visibility="public"/>
+        <Method name="getLegs" returnType="int" visibility="public"/>
+        <Method name="isThrowing" returnType="boolean" visibility="public"/>
+        <Method name="isFinnished" returnType="boolean" visibility="public"/>
+        <Method name="setThrowing" returnType="void" visibility="public">
+          <Argument type="boolean" name="throwing"/>
+        </Method>
+        <Method name="setName" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="setWürfe" returnType="void" visibility="public">
+          <Argument type="int" name="würfe"/>
+        </Method>
+        <Method name="setScore" returnType="void" visibility="public">
+          <Argument type="int" name="score"/>
+        </Method>
+        <Method name="setLegs" returnType="void" visibility="public">
+          <Argument type="int" name="legs"/>
+        </Method>
+        <Method name="getSaveformat" returnType="int" visibility="public"/>
+        <Method name="setFormat" returnType="void" visibility="public">
+          <Argument type="int" name="format"/>
+        </Method>
+        <Method name="setFinnished" returnType="void" visibility="public">
+          <Argument type="boolean" name="finnished"/>
+        </Method>
+        <Method name="save" returnType="void" visibility="public"/>
+        <Method name="reset" returnType="void" visibility="public"/>
+        <Method name="playon" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DartCountModel" package="BL" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="player" type="ArrayList&lt;Player&gt;" visibility="private"/>
+        <Field name="colnames" type="String[]" visibility="private"/>
+        <Field name="last" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getRowCount" returnType="int" visibility="public"/>
+        <Method name="getColumnCount" returnType="int" visibility="public"/>
+        <Method name="getValueAt" returnType="Object" visibility="public">
+          <Argument type="int" name="rowIndex"/>
+          <Argument type="int" name="columnIndex"/>
+        </Method>
+        <Method name="getColumnName" returnType="String" visibility="public">
+          <Argument type="int" name="column"/>
+        </Method>
+        <Method name="add" returnType="void" visibility="public">
+          <Argument type="Player" name="t"/>
+        </Method>
+        <Method name="size" returnType="int" visibility="public"/>
+        <Method name="getCurrent" returnType="Player" visibility="public"/>
+        <Method name="next" returnType="void" visibility="public">
+          <Argument type="Player" name="p"/>
+        </Method>
+        <Method name="checkwin_einfach" returnType="boolean" visibility="public">
+          <Argument type="Player" name="p"/>
+        </Method>
+        <Method name="checkwin_doppel" returnType="boolean" visibility="public">
+          <Argument type="Player" name="p"/>
+          <Argument type="String" name="feld"/>
+        </Method>
+        <Method name="throw_input_einzeln" returnType="void" visibility="public">
+          <Argument type="Player" name="p"/>
+          <Argument type="String" name="value"/>
+        </Method>
+        <Method name="throw_input_value" returnType="void" visibility="public">
+          <Argument type="Player" name="p"/>
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="getCheckout" returnType="String[]" visibility="public">
+          <Argument type="Player" name="p"/>
+        </Method>
+        <Method name="restart" returnType="void" visibility="public"/>
+        <Method name="save" returnType="void" visibility="public"/>
+        <Method name="continuegame" returnType="void" visibility="public"/>
+        <Method name="gamemon" returnType="void" visibility="public" isStatic="true" isSynchronized="true"/>
+        <Method name="score180" returnType="void" visibility="public">
+          <Argument type="int" name="score"/>
+        </Method>
+        <Method name="gameend" returnType="void" visibility="public"/>
+        <Method name="saveToDatabase" returnType="void" visibility="public">
+          <Argument type="Player" name="current"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DartCountTableRenderer" package="Table" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getTableCellRendererComponent" returnType="Component" visibility="public">
+          <Argument type="JTable" name="table"/>
+          <Argument type="Object" name="value"/>
+          <Argument type="boolean" name="isSelected"/>
+          <Argument type="boolean" name="hasFocus"/>
+          <Argument type="int" name="row"/>
+          <Argument type="int" name="column"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DartGame" package="GUI" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="format" type="int" visibility="private"/>
+        <Field name="currentPlayer" type="Player" visibility="private"/>
+        <Field name="options" type="String[]" visibility="package"/>
+        <Field name="bl" type="DartCountModel" visibility="private"/>
+        <Field name="bc" type="Color" visibility="private"/>
+        <Field name="Format" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="Spieler" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="Steuerung" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="b" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="board" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="c" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="c1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="c2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="c3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="checkout" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="confirm" type="javax.swing.JButton" visibility="private"/>
+        <Field name="debug" type="javax.swing.JMenu" visibility="private"/>
+        <Field name="f_301" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="f_501" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="jMenuBar1" type="javax.swing.JMenuBar" visibility="private"/>
+        <Field name="jScrollPane1" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="p_1" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="p_2" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="p_3" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="p_4" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="player" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="s" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="s1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="s2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="s3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="s_input_three" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="s_input_val" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="s_r" type="javax.swing.JMenuItem" visibility="private"/>
+        <Field name="table" type="javax.swing.JTable" visibility="private"/>
+        <Field name="throwvalue" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="undo" type="javax.swing.JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="p_1ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="p_2ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="p_3ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="p_4ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="f_301ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="f_501ActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="s_rActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="s_input_valActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="s_input_threeActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="theInstance" source="BL.DataBaseConnection" target="BL.DataBaseConnection" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="BL.DataBaseConnection" target="BL.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="currentPlayer" source="GUI.DartGame" target="BL.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="BL.DataBaseConnection" target="BL.DataBaseConnection" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="BL.DartCountModel" target="BL.Player" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="player" source="BL.DartCountModel" target="BL.Player" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Player&gt;"/>
+    <HasRelation name="bl" source="GUI.DartGame" target="BL.DartCountModel" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

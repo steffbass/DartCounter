@@ -608,6 +608,7 @@ public class DartGame extends javax.swing.JFrame {
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
+                       p.printStackTrace();
                       
                     }
 

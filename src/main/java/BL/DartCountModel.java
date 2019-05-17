@@ -8,7 +8,10 @@ package BL;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javafx.util.converter.LocalDateTimeStringConverter;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -1240,25 +1243,35 @@ public class DartCountModel extends AbstractTableModel {
      */
     public void save() throws IOException {
 
-        for (int i = 0; i < player.size(); i++) {
-            Player p = player.get(i);
+        StringBuilder sb = new StringBuilder();
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Output/statistik.txt"));
+        String output = "";
+         LocalDateTime a = LocalDateTime.now();
+        
+        for (Player p : player) {
             String name = p.getName();
+            int format = p.getFormat();
             int würfe = p.getWürfe();
-            int überbleib = p.getFormat();
-            int leg = p.getLegs();
-            double durch = p.getSaveformat() / p.getWürfe();
+            int legs = p.getLegs();
+            int saveform = p.getSaveformat();
+            double aver = (saveform-format)/würfe;
+           
+            a.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            
+            sb.delete(0,sb.length());
+            
+            sb.append(a).append(" - ").append(name).append(" - ").append(format).append("/").append(saveform).append(" - ").append(würfe).append(" Würfe - Average von: ").append(aver).append("\n");
+           writer.write(output);
+           output = sb.toString();
 
+           writer.write(output);
+       
+        
+            
         }
 
-        // gespeichert werden soll: name, würfe, score von format, average, doublequte, legs gewonnen
-        // statistik von gewinner soll in db gespeichert werden und die anzahl von siegen von dieser person in dem joptionpane angezeigt werden
-        String str = "";
-
-        BufferedWriter writer = new BufferedWriter(new FileWriter("Output/statistik.txt"));
-        writer.write(str);
-
-        writer.close();
-
+writer.write("\n");
+ writer.close();
     }
 
     /**
@@ -1275,7 +1288,6 @@ public class DartCountModel extends AbstractTableModel {
                 p.setLegs(p.getLegs() + 1);
             }
             p.playon();
-            //bug here // extra variable um spieler mitzuspeichern wer letzes drann war
 
             if (player.size() == 1) {
                 h = player.get(0);

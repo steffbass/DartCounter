@@ -6,18 +6,12 @@
 package BL;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javafx.util.converter.LocalDateTimeStringConverter;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -30,7 +24,6 @@ public class DartCountModel extends AbstractTableModel {
      * Arraylist von Spielern
      */
     private ArrayList<Player> player = new ArrayList();
-    
 
     /**
      * Spalten von der Tabelle
@@ -176,6 +169,7 @@ public class DartCountModel extends AbstractTableModel {
 
     /**
      * Eingabe des getroffenes Feldes und abzug von Punktekonto
+     *
      * @param p Spieler der an der Reihe ist
      * @param value geworfene Feld
      * @throws Exception wenn das Feld ungültig ist oder nicht existiert
@@ -227,8 +221,8 @@ public class DartCountModel extends AbstractTableModel {
     }
 
     /**
-     * Eingabe von geworfenen Punkte
-     * Abzug von Punktekonto
+     * Eingabe von geworfenen Punkte Abzug von Punktekonto
+     *
      * @param p Spieler der an der Reihe ist
      * @param value geworfene Punkte
      */
@@ -243,9 +237,12 @@ public class DartCountModel extends AbstractTableModel {
     }
 
     /**
-     * Überprüft wie der Spieler seine restlichen Punkte auf bestmöglichen Weg ausmachen kann
+     * Überprüft wie der Spieler seine restlichen Punkte auf bestmöglichen Weg
+     * ausmachen kann
+     *
      * @param p Spieler der an der Reihe ist
-     * @return String Array mit den Einzelnen Feldern die noch getroffen werden müssen
+     * @return String Array mit den Einzelnen Feldern die noch getroffen werden
+     * müssen
      */
     public String[] getCheckout(Player p) {
 
@@ -1246,39 +1243,38 @@ public class DartCountModel extends AbstractTableModel {
 
     /**
      * Abspeicherung von Statistik von Allen Spielern in einer .txt
-     * @throws IOException 
+     *
+     * @throws IOException
      */
     public void save() throws IOException {
 
         StringBuilder sb = new StringBuilder();
         BufferedWriter writer = new BufferedWriter(new FileWriter("Output/statistik.txt"));
         String output = "";
-         LocalDateTime a = LocalDateTime.now();
-        
+        LocalDateTime a = LocalDateTime.now();
+
         for (Player p : player) {
             String name = p.getName();
             int format = p.getFormat();
             int würfe = p.getWürfe();
             int legs = p.getLegs();
             int saveform = p.getSaveformat();
-            double aver = (saveform-format)/würfe;
-           
-            a.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            
-            sb.delete(0,sb.length());
-            
-            sb.append(a).append(" - ").append(name).append(" - ").append(format).append("/").append(saveform).append(" - ").append(würfe).append(" Würfe - Average von: ").append(aver).append("\n");
-           writer.write(output);
-           output = sb.toString();
+            double aver = (saveform - format) / würfe;
 
-           writer.write(output);
-       
-        
-            
+            a.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+            sb.delete(0, sb.length());
+
+            sb.append(a).append(" - ").append(name).append(" - ").append(format).append("/").append(saveform).append(" - ").append(würfe).append(" Würfe - Average von: ").append(aver).append("\n");
+            writer.write(output);
+            output = sb.toString();
+
+            writer.write(output);
+
         }
 
-writer.write("\n");
- writer.close();
+        writer.write("\n");
+        writer.close();
     }
 
     /**
@@ -1313,57 +1309,57 @@ writer.write("\n");
      * Abspielen von Game On Sound mittels Thread
      */
     public static synchronized void gamemon() {
-        
-       new Thread(new Runnable() { 
-            public void run() {     
+
+        new Thread(new Runnable() {
+            public void run() {
                 Musikplayer mp = new Musikplayer();
-               mp.dateiAnspielen("./audio/gameon.mp3");   
+                mp.dateiAnspielen("./audio/gameon.mp3");
                 System.out.println("Game on!");
-           }
-       }).start();
-       
+            }
+        }).start();
+
     }
 
     /**
      * Abspielen von 180 Sound wenn 180 Punkte geworfen wurden - Thread
+     *
      * @param score übergabe von geworfenen Punkten
      */
     public void score180(int score) {
-        
- if(score == 180)
- {
-   new Thread(new Runnable() { 
-            public void run() {     
-                Musikplayer mp = new Musikplayer();
-               mp.dateiAnspielen("./audio/s_180.mp3");   
-                System.out.println("180");
-           }
-       }).start();
-       
- }
+
+        if (score == 180) {
+            new Thread(new Runnable() {
+                public void run() {
+                    Musikplayer mp = new Musikplayer();
+                    mp.dateiAnspielen("./audio/s_180.mp3");
+                    System.out.println("180");
+                }
+            }).start();
+
+        }
     }
 
     /**
      * Abspielen von wenn Spiel beendet ist - Thread
      */
     public void gameend() {
-  new Thread(new Runnable() { 
-            public void run() {     
+        new Thread(new Runnable() {
+            public void run() {
                 Musikplayer mp = new Musikplayer();
-               mp.dateiAnspielen("./audio/end.mp3");   
+                mp.dateiAnspielen("./audio/end.mp3");
                 System.out.println("End");
-           }
-       }).start();
-       
+            }
+        }).start();
+
     }
 
     /**
      * Speichert Sieger von Leg in die Datenbank
+     *
      * @param current der Spieler der gewonnen hat
-     * @throws SQLException 
+     * @throws SQLException
      */
-    
-   public void saveToDatabase(Player current) throws SQLException{
+    public void saveToDatabase(Player current) throws SQLException {
 //      Player win = null;
 //      
 //        for (Player player1 : player) {
@@ -1380,7 +1376,5 @@ writer.write("\n");
 //        
 //        
 //        }
-   }
+    }
 }
-    
-

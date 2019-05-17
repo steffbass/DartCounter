@@ -5,39 +5,31 @@
  */
 package BL;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author stefan
  */
 public class DataBaseConnection {
-     /**
+
+    /**
      * The one and only instance of the DataBase class.
      */
-      private static DataBaseConnection theInstance;
-      
-      private static Connection conn;
+    private static DataBaseConnection theInstance;
 
-      public DataBaseConnection() throws SQLException {
+    private static Connection conn;
+
+    public DataBaseConnection() throws SQLException {
         conn = DriverManager.getConnection("jdbc:postgresql://localhost:50024/winner", "postgres", "postgres");
     }
-      
-    
-     
-     /**
+
+    /**
      * If the instance hasn't been created before, it gets created.
      *
      * @return Returns the DataBase instance.
@@ -48,31 +40,32 @@ public class DataBaseConnection {
         }
         return theInstance;
     }
-    
-   
-    
+
     /**
      * inserts Values into Table
-     * @throws Exception 
+     *
+     * @throws Exception
      */
-     public void insert(Player p) throws Exception {
-          LocalDateTime a = LocalDateTime.now();
-        
-          String name = p.getName();
-            int format = p.getFormat();
-            int würfe = p.getWürfe();
-            int saveform = p.getSaveformat();
-            double aver = (saveform-format)/würfe;
-          
-            a.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-          
-        String sql = "INSERT INTO winner VALUES('"+a+"', '"+name+"', '"+saveform+"', '"+aver+"');";
-             
+    public void insert(Player p) throws Exception {
+        LocalDateTime a = LocalDateTime.now();
 
-       try{ Statement stat = conn.createStatement();
-        stat.executeUpdate(sql);}catch(Exception e){System.out.println(e);}
-       
+        String name = p.getName();
+        int format = p.getFormat();
+        int würfe = p.getWürfe();
+        int saveform = p.getSaveformat();
+        double aver = (saveform - format) / würfe;
+
+        a.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+
+        String sql = "INSERT INTO winner VALUES('" + a + "', '" + name + "', '" + saveform + "', '" + aver + "');";
+
+        try {
+            Statement stat = conn.createStatement();
+            stat.executeUpdate(sql);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
     }
-     
-     
+
 }

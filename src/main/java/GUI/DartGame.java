@@ -18,24 +18,23 @@ import javax.swing.JOptionPane;
  */
 public class DartGame extends javax.swing.JFrame {
 
-    
     /**
      * Spielformat eines Spielers
      */
     private int format = 0;
-    
+
     /**
      * Spieler der zurzeit an der Reihe ist
      */
     private Player currentPlayer;
-    
+
     /**
      * Auswahloptionen nach dem gewinn eines Legs
      */
     String[] options = new String[]{"Beenden", "Neu start", "Speichern & weiter spielen"};
 
     private DartCountModel bl = new DartCountModel();
-    
+
     /**
      * Hintergrundfarbe von UI
      */
@@ -385,7 +384,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * 1 Spieler erstellen
-     * @param evt 
+     *
+     * @param evt
      */
     private void p_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_1ActionPerformed
         // TODO add your handling code here:
@@ -414,7 +414,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * 2 Spieler erstellen
-     * @param evt 
+     *
+     * @param evt
      */
     private void p_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_2ActionPerformed
         // TODO add your handling code here:
@@ -444,7 +445,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * 3 Spieler erstellen
-     * @param evt 
+     *
+     * @param evt
      */
     private void p_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_3ActionPerformed
         // TODO add your handling code here:
@@ -460,7 +462,7 @@ public class DartGame extends javax.swing.JFrame {
                     pl.setThrowing(true);
                 }
                 bl.add(pl);
-                  bl.gamemon();
+                bl.gamemon();
 
             }
         } else {
@@ -474,7 +476,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * 4 Spieler erstellen
-     * @param evt 
+     *
+     * @param evt
      */
     private void p_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_p_4ActionPerformed
         // TODO add your handling code here:
@@ -490,7 +493,7 @@ public class DartGame extends javax.swing.JFrame {
                     pl.setThrowing(true);
                 }
                 bl.add(pl);
-                  bl.gamemon();
+                bl.gamemon();
 
             }
         } else {
@@ -504,7 +507,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * Auswahl des Spiel Formates 301 Double-Out
-     * @param evt 
+     *
+     * @param evt
      */
     private void f_301ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_301ActionPerformed
         // TODO add your handling code here:
@@ -517,7 +521,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * Auswahl des Spiel Formates 501 Double-Out
-     * @param evt 
+     *
+     * @param evt
      */
     private void f_501ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_f_501ActionPerformed
         // TODO add your handling code here:
@@ -530,7 +535,8 @@ public class DartGame extends javax.swing.JFrame {
 
     /**
      * Spiel neustarten
-     * @param evt 
+     *
+     * @param evt
      */
     private void s_rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_rActionPerformed
         // TODO add your handling code here:
@@ -540,9 +546,10 @@ public class DartGame extends javax.swing.JFrame {
     }//GEN-LAST:event_s_rActionPerformed
 
     /**
-     * Eingabe der gesamt geworfenen Punkte
-     * inkl. Anzeige wie man seinen Score ausmachen kann & Wurf überprüfung
-     * @param evt 
+     * Eingabe der gesamt geworfenen Punkte inkl. Anzeige wie man seinen Score
+     * ausmachen kann & Wurf überprüfung
+     *
+     * @param evt
      */
     private void s_input_valActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_valActionPerformed
         // TODO add your handling code here:
@@ -575,12 +582,11 @@ public class DartGame extends javax.swing.JFrame {
                     bl.score180(wurf);
                     try {
                         bl.checkwin_einfach(currentPlayer);
-                        
+
                         if (currentPlayer.isFinnished()) {
-                            
+
                             bl.gameend();
                             bl.saveToDatabase(bl.getCurrent());
-                         
 
                             int response = JOptionPane.showOptionDialog(null, currentPlayer.getName() + " hat gewonnen", "Gewonnen!",
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
@@ -605,15 +611,15 @@ public class DartGame extends javax.swing.JFrame {
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c2.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c3.setIcon(new ImageIcon("./Assets/-.jpg"));
-                                  bl.gamemon();
+                                bl.gamemon();
                                 return;
                             }
 
                         }
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen");
-                       p.printStackTrace();
-                      
+                        p.printStackTrace();
+
                     }
 
                     currentPlayer.save();
@@ -647,9 +653,10 @@ public class DartGame extends javax.swing.JFrame {
     }//GEN-LAST:event_s_input_valActionPerformed
 
     /**
-     * Jedes einzelne getroffene Feld wird eingegeben wie zB T20
-     * inkl. Anzeige wie man seinen Score ausmachen kann & Wurf überprüfung
-     * @param evt 
+     * Jedes einzelne getroffene Feld wird eingegeben wie zB T20 inkl. Anzeige
+     * wie man seinen Score ausmachen kann & Wurf überprüfung
+     *
+     * @param evt
      */
     private void s_input_threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_input_threeActionPerformed
         // TODO add your handling code here:
@@ -680,11 +687,11 @@ public class DartGame extends javax.swing.JFrame {
 
                 try {
                     bl.throw_input_einzeln(currentPlayer, feld);
-                    
-                     try {
-                                    bl.checkwin_doppel(currentPlayer, feld);
+
+                    try {
+                        bl.checkwin_doppel(currentPlayer, feld);
                         if (currentPlayer.isFinnished()) {
-                            
+
                             bl.gameend();
                             bl.saveToDatabase(bl.getCurrent());
 
@@ -708,7 +715,7 @@ public class DartGame extends javax.swing.JFrame {
                             if (response == 2) {
                                 bl.save();
                                 bl.continuegame();
-                                  bl.gamemon();
+                                bl.gamemon();
                                 c1.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c2.setIcon(new ImageIcon("./Assets/-.jpg"));
                                 c3.setIcon(new ImageIcon("./Assets/-.jpg"));
@@ -719,7 +726,7 @@ public class DartGame extends javax.swing.JFrame {
                     } catch (Exception p) {
                         JOptionPane.showMessageDialog(null, "Überworfen oder ohne Double ausgemacht");
                         currentPlayer.setFormat(currentPlayer.getScore());
-                       break;
+                        break;
                     }
 
                 } catch (Exception e) {

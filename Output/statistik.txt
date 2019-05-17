@@ -1,2 +1,4 @@
-2019-05-17T18:59:05.582 - f - 0/301 - 9 Würfe - Average von: 33.0
+2019-05-17T22:35:53.133 - Stefan - 0/301 - 6 Würfe - Average von: 50.0
+2019-05-17T22:35:53.133 - Stefan - 0/301 - 6 Würfe - Average von: 50.0
+2019-05-17T22:35:53.133 - Java - 220/301 - 3 Würfe - Average von: 27.0
 
